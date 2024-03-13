@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 
-public class TestingInputSystem : MonoBehaviour
+public class InputSystem : MonoBehaviour
 {
 
     public Rigidbody2D rb;
