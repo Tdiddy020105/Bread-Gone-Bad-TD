@@ -1,8 +1,7 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using Cinemachine;
 
 public class AttackableStructure : MonoBehaviour
 {
@@ -16,12 +15,22 @@ public class AttackableStructure : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        Debug.Log($"Trigger {this.gameObject.name} entered by {collider.name}");
+        if (collider.tag != this.attackPerimiter.tag)
+        {
+            return;
+        }
+
+        Debug.Log($"Trigger {collider.name} can attack {this.gameObject.name}");
     }
 
     private void OnTriggerExit2D(Collider2D collider)
     {
-        Debug.Log($"Trigger {this.gameObject.name} exited by {collider.name}");
+        if (collider.tag != this.attackPerimiter.tag)
+        {
+            return;
+        }
+
+        Debug.Log($"Trigger {collider.name} cannot attack {this.gameObject.name}");
     }
 
     private void GenerateAndApplyAttackPerimiterCollider()
@@ -76,6 +85,9 @@ public class AttackableStructure : MonoBehaviour
 
     private Rect CalculateAttackPerimiterOutline(AttackPerimiter attackPerimiter)
     {
+        // Lossy scale is used to properly apply the global scale of all parent objects
+        // This will allow the actual attack perimiter to be scaled properly
+
         float halfWidth = (this.transform.lossyScale.x / 2) + attackPerimiter.perimiterBounds.x;
         float cornerLeftX = this.transform.position.x - halfWidth;
         float cornerRightX = this.transform.position.x + halfWidth;
@@ -92,6 +104,10 @@ public class AttackableStructure : MonoBehaviour
 [Serializable]
 public class AttackPerimiter
 {
-    [SerializeField] public Vector2 perimiterBounds;
-    [SerializeField] public string tag;
+    [SerializeField]
+    public Vector2 perimiterBounds;
+
+    [TagField]
+    [SerializeField]
+    public string tag;
 }
