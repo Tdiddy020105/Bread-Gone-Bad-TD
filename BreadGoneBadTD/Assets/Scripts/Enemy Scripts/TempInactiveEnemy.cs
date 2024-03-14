@@ -1,9 +1,9 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class TempMouseFollowEnemy : MonoBehaviour
+public class TempInactiveEnemy : MonoBehaviour
 {
-    [SerializeField] private Camera cam;
-
     private void OnEnable()
     {
         AttackableStructureRange.OnCanAttackStructure += this.HandleCanAttackState;
@@ -14,13 +14,6 @@ public class TempMouseFollowEnemy : MonoBehaviour
     {
         AttackableStructureRange.OnCanAttackStructure -= this.HandleCanAttackState;
         AttackableStructureRange.OnCannotAttackStructure -= this.HandleCannotAttackState;
-    }
-
-    void Update()
-    {
-        this.transform.position = this.cam.ScreenToWorldPoint(
-            new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1)
-        );
     }
 
     private void HandleCanAttackState(int instanceId, AttackableStructure attackableStructure)
