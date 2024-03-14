@@ -1315,7 +1315,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1157111407515165218, guid: 872100f6a36400a4bbf46d818eaee6af, type: 3}
       propertyPath: m_IsTrigger
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1157111407515165218, guid: 872100f6a36400a4bbf46d818eaee6af, type: 3}
       propertyPath: m_AutoTiling
