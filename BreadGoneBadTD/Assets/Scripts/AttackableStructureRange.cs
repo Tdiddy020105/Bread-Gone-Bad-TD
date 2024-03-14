@@ -1,30 +1,46 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class AttackableStructure : MonoBehaviour
 {
-    [SerializeField] List<AttackPerimiter> attackPerimiters = new List<AttackPerimiter>();
+    [SerializeField] private AttackPerimiter attackPerimiter = new();
+
 
     private void Start()
     {
-
+        this.GenerateAndApplyAttackPerimiterCollider();
     }
 
-    private void Update()
+    private void OnTriggerEnter2D(Collider2D collider)
     {
+        Debug.Log($"Trigger {this.gameObject.name} entered by {collider.name}");
+    }
 
+    private void OnTriggerExit2D(Collider2D collider)
+    {
+        Debug.Log($"Trigger {this.gameObject.name} exited by {collider.name}");
+    }
+
+    private void GenerateAndApplyAttackPerimiterCollider()
+    {
+        Rect perimiterOutline = this.CalculateAttackPerimiterOutline(attackPerimiter);
+        BoxCollider2D attackPerimiterCollider = this.AddComponent<BoxCollider2D>();
+
+        // Convert the perimiter outline to the local size of the structure it's attached to
+        attackPerimiterCollider.size = new Vector2(
+            perimiterOutline.width / this.transform.lossyScale.x,
+            perimiterOutline.height / this.transform.lossyScale.y
+        );
+        attackPerimiterCollider.isTrigger = true;
     }
 
     #region Debug line drawing
     private void OnDrawGizmos()
     {
-        foreach (AttackPerimiter attackPerimiter in this.attackPerimiters)
-        {
-            this.DrawAttackPerimiterGizmo(attackPerimiter);
-        }
+        this.DrawAttackPerimiterGizmo(this.attackPerimiter);
     }
 
     private void DrawAttackPerimiterGizmo(AttackPerimiter attackPerimiter)
@@ -60,13 +76,13 @@ public class AttackableStructure : MonoBehaviour
 
     private Rect CalculateAttackPerimiterOutline(AttackPerimiter attackPerimiter)
     {
-        float halfWidth = (this.transform.localScale.x / 2) + attackPerimiter.perimiterBounds.x;
-        float cornerLeftX = this.transform.localPosition.x - halfWidth;
-        float cornerRightX = this.transform.localPosition.x + halfWidth;
+        float halfWidth = (this.transform.lossyScale.x / 2) + attackPerimiter.perimiterBounds.x;
+        float cornerLeftX = this.transform.position.x - halfWidth;
+        float cornerRightX = this.transform.position.x + halfWidth;
 
-        float halfHeight = (this.transform.localScale.y / 2) + attackPerimiter.perimiterBounds.y;
-        float cornerTopY = this.transform.localPosition.y - halfHeight;
-        float cornerBottomY = this.transform.localPosition.y + halfHeight;
+        float halfHeight = (this.transform.lossyScale.y / 2) + attackPerimiter.perimiterBounds.y;
+        float cornerTopY = this.transform.position.y - halfHeight;
+        float cornerBottomY = this.transform.position.y + halfHeight;
 
         return new Rect(cornerLeftX, cornerTopY, cornerRightX - cornerLeftX, cornerBottomY - cornerTopY);
     }
@@ -77,5 +93,5 @@ public class AttackableStructure : MonoBehaviour
 public class AttackPerimiter
 {
     [SerializeField] public Vector2 perimiterBounds;
-    [SerializeField] public String tag;
+    [SerializeField] public string tag;
 }
