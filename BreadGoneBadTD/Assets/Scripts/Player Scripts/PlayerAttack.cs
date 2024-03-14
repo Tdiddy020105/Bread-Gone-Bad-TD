@@ -1,38 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerAttack : MonoBehaviour
 {
 
-    private GameObject attackArea = default;
+    public WeaponData currentWeapon;
+    public Transform attackAreaParent;
+
+    private GameObject currentAttackArea;
     private bool attacking = false;
-    private float timetoAttack = 0.25f;
+    private float timetoAttack; // Declare timetoAttack here
     private float timer = 0f;
+
+    public InputActionReference attackAction;
 
     // Start is called before the first frame update
     void Start()
     {
-        attackArea = transform.GetChild(0).gameObject;
+        InstantiateAttackArea(currentWeapon.attackAreaPrefab);
+        timetoAttack = 1f / currentWeapon.attackRate; 
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        // Check if the attack action is triggered
+        if (attackAction.action.triggered)
         {
             Attack();
         }
 
-        if(attacking)
+        if (attacking)
         {
             timer += Time.deltaTime;
 
-            if(timer >= timetoAttack)
+            if (timer >= timetoAttack)
             {
                 timer = 0;
                 attacking = false;
-                attackArea.SetActive(attacking);
+                currentAttackArea.SetActive(attacking);
             }
         }
     }
@@ -40,6 +47,31 @@ public class PlayerAttack : MonoBehaviour
     private void Attack()
     {
         attacking = true;
-        attackArea.SetActive(attacking);
+        currentAttackArea.SetActive(attacking);
+    }
+
+    private void InstantiateAttackArea(GameObject attackAreaPrefab)
+    {
+        // Instantiate or enable the attack area prefab based on the current weapon
+        if (attackAreaPrefab != null)
+        {
+            // If an attack area already exists, destroy it first
+            if (currentAttackArea != null)
+            {
+                Destroy(currentAttackArea);
+            }
+            
+            // Instantiate the attack area prefab as a child of the attackAreaParent
+            currentAttackArea = Instantiate(attackAreaPrefab, attackAreaParent);
+            currentAttackArea.SetActive(false); // Deactivate initially
+
+
+            //Optional, ask for feedback
+            //currentAttackArea.transform.localScale = new Vector3(currentWeapon.range * 2, currentWeapon.range * 2, 1);
+        }
+        else
+        {
+            Debug.LogWarning("Attack area prefab is null.");
+        }
     }
 }
