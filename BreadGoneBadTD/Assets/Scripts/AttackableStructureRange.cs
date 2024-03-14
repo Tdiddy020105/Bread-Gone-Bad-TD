@@ -3,8 +3,22 @@ using Unity.VisualScripting;
 using UnityEngine;
 using Cinemachine;
 
-public class AttackableStructure : MonoBehaviour
+[Serializable]
+public class AttackPerimiter
 {
+    [SerializeField]
+    public Vector2 perimiterBounds;
+
+    [TagField]
+    [SerializeField]
+    public string tag;
+}
+
+public class AttackableStructureRange : MonoBehaviour
+{
+    public static event Action<AttackableStructure> onCanAttackStructure;
+    public static event Action onCannotAttackStructure;
+
     [SerializeField] private AttackPerimiter attackPerimiter = new();
 
 
@@ -15,12 +29,14 @@ public class AttackableStructure : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.tag != this.attackPerimiter.tag)
+        AttackableStructure attackableStructure = this.GetComponentInParent<AttackableStructure>();
+
+        if (collider.tag != this.attackPerimiter.tag || attackableStructure == null)
         {
             return;
         }
 
-        Debug.Log($"Trigger {collider.name} can attack {this.gameObject.name}");
+        onCanAttackStructure?.Invoke(attackableStructure);
     }
 
     private void OnTriggerExit2D(Collider2D collider)
@@ -30,7 +46,7 @@ public class AttackableStructure : MonoBehaviour
             return;
         }
 
-        Debug.Log($"Trigger {collider.name} cannot attack {this.gameObject.name}");
+        onCannotAttackStructure?.Invoke();
     }
 
     private void GenerateAndApplyAttackPerimiterCollider()
@@ -88,6 +104,8 @@ public class AttackableStructure : MonoBehaviour
         // Lossy scale is used to properly apply the global scale of all parent objects
         // This will allow the actual attack perimiter to be scaled properly
 
+        // These calculations look wonky because we need to go to the outer most points from the center of the object
+        // (The game object's origin point is located in its center)
         float halfWidth = (this.transform.lossyScale.x / 2) + attackPerimiter.perimiterBounds.x;
         float cornerLeftX = this.transform.position.x - halfWidth;
         float cornerRightX = this.transform.position.x + halfWidth;
@@ -99,15 +117,4 @@ public class AttackableStructure : MonoBehaviour
         return new Rect(cornerLeftX, cornerTopY, cornerRightX - cornerLeftX, cornerBottomY - cornerTopY);
     }
     #endregion
-}
-
-[Serializable]
-public class AttackPerimiter
-{
-    [SerializeField]
-    public Vector2 perimiterBounds;
-
-    [TagField]
-    [SerializeField]
-    public string tag;
 }
