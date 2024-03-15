@@ -24,7 +24,7 @@ public class TempInactiveEnemy : MonoBehaviour
         }
 
         Debug.Log($"{this.gameObject.name} Attacks!");
-        attackableStructure.DealDamage(5);
+        attackableStructure.TakeDamage(5);
     }
 
     private void HandleCannotAttackState(int instanceId)
