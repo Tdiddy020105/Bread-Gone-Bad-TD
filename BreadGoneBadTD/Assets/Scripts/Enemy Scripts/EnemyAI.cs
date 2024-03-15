@@ -8,6 +8,9 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private UnityEngine.AI.NavMeshAgent agent;
     [SerializeField] private GameObject target;
     [SerializeField] private int attack;
+    [SerializeField] private int health; 
+
+    [SerializeField] private GameObject player;
     
     
     
@@ -31,13 +34,18 @@ public class EnemyAI : MonoBehaviour
         {
             agent.SetDestination(target.transform.position);    
         }
+
+        if (this.health <= 0)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
 
-    private void OnTriggerEnter2D(Collider2D other) {
+    private void OnTriggerEnter2D(Collider2D trigger) {
         Debug.Log("Trigger collision!");
         //Check for a match with the specified target on any GameObject with a trigger that collides with your GameObject
-        if (other.gameObject == target)
+        if (trigger.gameObject == target)
         {
             target.GetComponent<BakeryScript>().health -= this.attack;
             Debug.Log("The bakery has been hit for " + this.attack + " damage!");
@@ -45,5 +53,14 @@ public class EnemyAI : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+
+/*     private void OnCollisionEnter2D(Collision2D collision){
+        if (collision.gameObject == player)
+        {
+            this.health -= player.GetComponent<WeaponData>().damage;
+            Debug.Log(this.name " has been hit for " + player.GetComponent<WeaponData>().damage + " damage!");
+            Debug.Log( this.name + " is now at " + this.health  + " health.");
+        }
+    } */
 
 }

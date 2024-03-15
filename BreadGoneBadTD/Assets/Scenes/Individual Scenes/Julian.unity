@@ -235,6 +235,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6907391697334484364, guid: 190424ad3569598479dd76b3eb40adf8, type: 3}
+      propertyPath: health
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6907391697334484364, guid: 190424ad3569598479dd76b3eb40adf8, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 2042255731}
@@ -325,6 +329,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6907391697334484364, guid: 190424ad3569598479dd76b3eb40adf8, type: 3}
       propertyPath: attack
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6907391697334484364, guid: 190424ad3569598479dd76b3eb40adf8, type: 3}
+      propertyPath: health
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6907391697334484364, guid: 190424ad3569598479dd76b3eb40adf8, type: 3}
@@ -734,6 +742,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6907391697334484364, guid: 190424ad3569598479dd76b3eb40adf8, type: 3}
       propertyPath: attack
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6907391697334484364, guid: 190424ad3569598479dd76b3eb40adf8, type: 3}
+      propertyPath: health
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6907391697334484364, guid: 190424ad3569598479dd76b3eb40adf8, type: 3}
@@ -1418,6 +1430,10 @@ PrefabInstance:
       propertyPath: bakery
       value: 
       objectReference: {fileID: 2042255733}
+    - target: {fileID: 6907391697334484364, guid: 190424ad3569598479dd76b3eb40adf8, type: 3}
+      propertyPath: health
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6907391697334484364, guid: 190424ad3569598479dd76b3eb40adf8, type: 3}
       propertyPath: target
       value: 
