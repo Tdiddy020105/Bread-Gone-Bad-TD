@@ -226,7 +226,7 @@ GameObject:
   - component: {fileID: 961761732}
   - component: {fileID: 961761731}
   m_Layer: 0
-  m_Name: GridTester
+  m_Name: GridObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -244,6 +244,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a69ca8c301cdc24c893604ee14273c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridWidth: 6
+  gridHeight: 3
 --- !u!4 &961761732
 Transform:
   m_ObjectHideFlags: 0
