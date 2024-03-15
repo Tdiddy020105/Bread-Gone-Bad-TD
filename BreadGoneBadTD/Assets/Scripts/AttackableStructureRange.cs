@@ -16,9 +16,6 @@ public class AttackPerimiter
 
 public class AttackableStructureRange : MonoBehaviour
 {
-    public static event Action<int, AttackableStructure> OnCanAttackStructure;
-    public static event Action<int> OnCannotAttackStructure;
-
     // Supress this warning because it will break the serialized field
     #pragma warning disable IDE0044 // Add readonly modifier
     [SerializeField] private AttackPerimiter attackPerimiter = new();
@@ -39,7 +36,7 @@ public class AttackableStructureRange : MonoBehaviour
             return;
         }
 
-        OnCanAttackStructure?.Invoke(collider.gameObject.GetInstanceID(), attackableStructure);
+        collider.SendMessage("CanAttackStructure", attackableStructure);
     }
 
     private void OnTriggerExit2D(Collider2D collider)
@@ -49,7 +46,7 @@ public class AttackableStructureRange : MonoBehaviour
             return;
         }
 
-        OnCannotAttackStructure?.Invoke(collider.gameObject.GetInstanceID());
+        collider.SendMessage("CannotAttackStructure");
     }
 
     private void GenerateAndApplyAttackPerimiterCollider()
