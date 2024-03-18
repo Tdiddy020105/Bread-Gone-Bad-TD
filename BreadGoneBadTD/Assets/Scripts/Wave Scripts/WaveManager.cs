@@ -49,7 +49,7 @@ public class WaveManager : MonoBehaviour
                     if(nextEnemySpawnTimer < 0f)
                     {
                         nextEnemySpawnTimer = UnityEngine.Random.Range(0f, 2f);
-                        //Spawn enemy with enemy class
+                        //TODO Spawn enemy with enemy class
                         remainingEnemySpawnAmount--;
 
                         if(remainingEnemySpawnAmount <= 0)
@@ -67,7 +67,7 @@ public class WaveManager : MonoBehaviour
 
     private void SpawnWave()
     {
-        remainingEnemySpawnAmount = 5 + 3 * waveNumber;
+        remainingEnemySpawnAmount = 3 + 2 * waveNumber;
         waveState = WaveState.SpawningWave;
         waveNumber++;
 
