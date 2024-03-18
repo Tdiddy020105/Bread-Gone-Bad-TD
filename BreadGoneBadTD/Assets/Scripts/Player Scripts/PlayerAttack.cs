@@ -74,4 +74,18 @@ public class PlayerAttack : MonoBehaviour
             Debug.LogWarning("Attack area prefab is null.");
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log("Enemy attacked");
+        // Check if currently attacking and collision is with enemy
+        if (attacking && other.CompareTag("Enemy"))
+        {
+            // Get the damage value from the current weapon
+            int damage = currentWeapon.damage;
+            
+            // Handle damage
+            other.GetComponent<EnemyAI>().TakeDamage(damage);
+        }
+    }
 }

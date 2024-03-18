@@ -9,8 +9,6 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private GameObject target;
     [SerializeField] private int attack;
     [SerializeField] private int health; 
-
-    [SerializeField] private GameObject player;
     
     
     
@@ -41,9 +39,14 @@ public class EnemyAI : MonoBehaviour
         }
     } 
 
+    public void TakeDamage(int damage)
+    {
+        // Apply damage to the enemy's health
+        this.health -= damage;
+    }
 
     private void OnTriggerEnter2D(Collider2D trigger) {
-        Debug.Log("Trigger collision!");
+        //Debug.Log("Trigger Collsion");
         //Check for a match with the specified target on any GameObject with a trigger that collides with your GameObject
         if (trigger.gameObject == target)
         {
@@ -53,14 +56,4 @@ public class EnemyAI : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-
-/*     private void OnCollisionEnter2D(Collision2D collision){
-        if (collision.gameObject == player)
-        {
-            this.health -= player.GetComponent<WeaponData>().damage;
-            Debug.Log(this.name " has been hit for " + player.GetComponent<WeaponData>().damage + " damage!");
-            Debug.Log( this.name + " is now at " + this.health  + " health.");
-        }
-    } */
-
 }
