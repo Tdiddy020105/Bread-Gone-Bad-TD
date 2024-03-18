@@ -79,7 +79,7 @@ public class PlayerAttack : MonoBehaviour
     {
         Debug.Log("Enemy attacked");
         // Check if currently attacking and collision is with enemy
-        if (attacking && other.CompareTag("Enemy"))
+        if (attacking && other.CompareTag("MeleeEnemy"))
         {
             // Get the damage value from the current weapon
             int damage = currentWeapon.damage;
