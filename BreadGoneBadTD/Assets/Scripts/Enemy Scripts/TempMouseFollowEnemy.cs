@@ -9,6 +9,12 @@ public class TempMouseFollowEnemy : MonoBehaviour
         this.transform.position = this.cam.ScreenToWorldPoint(
             new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1)
         );
+
+        // Remove enemy when left mouse button is clicked
+        if (Input.GetMouseButtonDown(0))
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     private void CanAttackStructure(AttackableStructure attackableStructure)
