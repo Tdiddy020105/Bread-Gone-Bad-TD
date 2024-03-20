@@ -6,26 +6,67 @@ public class Tower : MonoBehaviour
 {
     [SerializeField] private TowerData towerData;
 
-    [SerializeField] private List<GameObject> enemiesWithinRange = new();
+    private List<GameObject> enemiesWithinRange = new();
+    private float attackTimer = 0.0f;
 
     private void Start()
     {
         this.GenerateAndApplyAttackRangePerimeterCollider();
     }
 
-    private void Update() {}
+    private void Update()
+    {
+        this.attackTimer += Time.deltaTime;
+
+        if (this.attackTimer >= this.towerData.secondsBetweenAttacks)
+        {
+            this.AttackEnemies();
+        }
+    }
+
+    private void AttackEnemies()
+    {
+        Debug.Log("ATTACK");
+
+        if (this.towerData.attackType == TowerAttackType.TARGET_FIRST_IN_RANGE)
+        {
+            EnemyAI enemy = this.enemiesWithinRange[0].GetComponent<EnemyAI>();
+            enemy.TakeDamage(this.towerData.attackDamage);
+
+            return;
+        }
+
+        if (this.towerData.attackType == TowerAttackType.TARGET_ALL_IN_RANGE)
+        {
+            foreach (GameObject gameObject in this.enemiesWithinRange)
+            {
+                EnemyAI enemy = gameObject.GetComponent<EnemyAI>();
+                enemy.TakeDamage(this.towerData.attackDamage);
+            }
+        }
+    }
 
     #region Enemy detection
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        // TODO: Check that an enemy instance has entered the trigger (So not a generic gameobject like it blindly accepts now)
+        EnemyAI enemy = collider.GetComponent<EnemyAI>();
+
+        if (enemy == null)
+        {
+            return;
+        }
 
         this.enemiesWithinRange.Add(collider.gameObject);
     }
 
     private void OnTriggerExit2D(Collider2D collider)
     {
-        // TODO: Check that an enemy instance has left the trigger (So not a generic gameobject like it blindly accepts now)
+        EnemyAI enemy = collider.GetComponent<EnemyAI>();
+
+        if (enemy == null)
+        {
+            return;
+        }
 
         // WARNING: This could possibly become buggy if we want to implement
         //           some more elaborate pathing that does not respect FIFO.
