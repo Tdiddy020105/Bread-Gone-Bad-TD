@@ -13,3 +13,6 @@ MonoBehaviour:
   m_Name: TestTower
   m_EditorClassIdentifier: 
   attackRange: {x: 1, y: 1}
+  attackType: 0
+  attackDamage: 12
+  secondsBetweenAttacks: 5

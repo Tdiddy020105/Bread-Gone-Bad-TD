@@ -393,7 +393,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerData: {fileID: 11400000, guid: aea019364891e5d1984b4c6be3e057d6, type: 2}
-  enemiesWithinRange: []
 --- !u!1 &225583157
 GameObject:
   m_ObjectHideFlags: 0
@@ -1227,6 +1226,10 @@ PrefabInstance:
     - target: {fileID: 1595221212790221431, guid: e075d19022a8e094b86b948d6a0ae104, type: 3}
       propertyPath: m_Name
       value: Bakery
+      objectReference: {fileID: 0}
+    - target: {fileID: 1595221212790221431, guid: e075d19022a8e094b86b948d6a0ae104, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6923467843991168279, guid: e075d19022a8e094b86b948d6a0ae104, type: 3}
       propertyPath: m_LocalPosition.x
