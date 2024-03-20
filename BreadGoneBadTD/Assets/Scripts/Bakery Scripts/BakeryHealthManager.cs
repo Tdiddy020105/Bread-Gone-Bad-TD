@@ -8,27 +8,53 @@ public class BakeryHealthManager : MonoBehaviour
 
     public Image healthBar;
     public float healthAmount = 100f;
+    public AttackableStructure bakeryStructure;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        // Find the bakery GameObject in the scene
+        GameObject bakeryGameObject = GameObject.Find("Bakery"); // Replace "Bakery" with the name of your bakery GameObject
+        if (bakeryGameObject != null)
+        {
+            // Get the AttackableStructure component attached to the bakery GameObject
+            bakeryStructure = bakeryGameObject.GetComponent<AttackableStructure>();
+            if (bakeryStructure == null)
+            {
+                Debug.LogError("Bakery GameObject does not have an AttackableStructure component.");
+            }
+        }
+        else
+        {
+            Debug.LogError("Bakery GameObject not found in the scene.");
+        }
     }
+
 
     // Update is called once per frame
     void Update()
     {
+        // Update health bar based on bakery health
+        if (bakeryStructure != null)
+        {
+            healthBar.fillAmount = bakeryStructure.GetHealth() / 100f;
+        }
+        /*
         if(Input.GetKeyDown(KeyCode.E))
         {
             BakeryTakeDamage(20);
         }
+        */
     }
 
     public void BakeryTakeDamage(float damage)
     {
-        healthAmount -= damage;
-        healthBar.fillAmount = healthAmount / 100f;
+        if (bakeryStructure != null)
+        {
+            bakeryStructure.TakeDamage((int)damage);
+        }
+        //healthAmount -= damage;
+        //healthBar.fillAmount = healthAmount / 100f;
     }
-
-
 }
+
