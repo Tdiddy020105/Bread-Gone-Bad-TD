@@ -8,6 +8,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1081495565856912258, guid: 0f5f5b9214398544e8a9004319d2ec36, type: 3}
+      propertyPath: m_Color.b
+      value: 0.3985261
+      objectReference: {fileID: 0}
+    - target: {fileID: 1081495565856912258, guid: 0f5f5b9214398544e8a9004319d2ec36, type: 3}
+      propertyPath: m_Color.g
+      value: 0.67308587
+      objectReference: {fileID: 0}
+    - target: {fileID: 1081495565856912258, guid: 0f5f5b9214398544e8a9004319d2ec36, type: 3}
+      propertyPath: m_Color.r
+      value: 0.8415094
+      objectReference: {fileID: 0}
     - target: {fileID: 2477059391168840629, guid: 0f5f5b9214398544e8a9004319d2ec36, type: 3}
       propertyPath: m_Name
       value: Gravel Tile
@@ -60,6 +72,16 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 7617506864200673737}
   m_SourcePrefab: {fileID: 100100000, guid: 0f5f5b9214398544e8a9004319d2ec36, type: 3}
+--- !u!1 &636996418548323215 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5957886792742734549, guid: 0f5f5b9214398544e8a9004319d2ec36, type: 3}
+  m_PrefabInstance: {fileID: 6519447161609443674}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &6159662988583725784 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 1081495565856912258, guid: 0f5f5b9214398544e8a9004319d2ec36, type: 3}
+  m_PrefabInstance: {fileID: 6519447161609443674}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8654215076380859119 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2477059391168840629, guid: 0f5f5b9214398544e8a9004319d2ec36, type: 3}
@@ -77,7 +99,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b38d71b40f515ba4394bc94d5aef08ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseColor: {r: 0.49019608, g: 0.09803922, b: 0, a: 1}
-  offSetColor: {r: 1, g: 0.29411766, b: 0, a: 1}
-  spriteRenderer: {fileID: 0}
-  highlight: {fileID: 0}
+  spriteRenderer: {fileID: 6159662988583725784}
+  highlight: {fileID: 636996418548323215}

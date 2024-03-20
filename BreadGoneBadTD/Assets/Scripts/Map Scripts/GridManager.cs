@@ -17,8 +17,8 @@ public class GridManager : MonoBehaviour
     [SerializeField]
     private Tile gravelTile;
 
-    [SerializeField]
-    private Transform cam;
+    //[SerializeField]
+    //private Transform cam;
 
     private Dictionary<Vector2, Tile> tiles;
 
@@ -46,7 +46,7 @@ public class GridManager : MonoBehaviour
         }
 
         //Sets camera to central grid position
-        cam.transform.position = new Vector3((float)width / 2 - .5f, (float)height / 2 - .5f, -10);
+        //cam.transform.position = new Vector3((float)width / 2 - .5f, (float)height / 2 - .5f, -10);
     }
 
     public Tile GetTileAtPosition(Vector2 pos)
