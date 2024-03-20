@@ -5,15 +5,14 @@ using UnityEngine;
 public class BakeryHealthBar : MonoBehaviour
 {
     [SerializeField] private GameObject bakery;
-    private Transform healthBar;
+    [SerializeField] private Transform healthBar;
     private float life;
     private float maxLife;
 
     void Start()
     {
-        healthBar.transform.Find("BakeryHealthGreen");
         life = 40f;
-        // life = bakery.GetComponent<AttackableStructure>.GetHealth();
+        // life = bakery.GetComponent<AttackableStructure>().GetHealth();
         maxLife = life;
         healthBar.localScale = new Vector3(life / maxLife, 1f);
     }
@@ -26,9 +25,9 @@ public class BakeryHealthBar : MonoBehaviour
             healthBar.localScale = new Vector3(life / maxLife, 1f);
         }
         /*
-         * else if (life != bakery.GetComponent<AttackableStructure>.GetHealth() && life > 0)
+         * else if (life != bakery.GetComponent<AttackableStructure>().GetHealth() && life > 0)
          * {
-         *  life = bakery.GetComponent<AttackableStructure>.GetHealth();
+         *  life = bakery.GetComponent<AttackableStructure>().GetHealth();
          *  healthBar.localScale = new Vector3(life / maxLife, 1f);
          * }
         */
