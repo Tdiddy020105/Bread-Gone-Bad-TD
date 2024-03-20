@@ -39,12 +39,6 @@ public class BakeryHealthManager : MonoBehaviour
         {
             healthBar.fillAmount = bakeryStructure.GetHealth() / 100f;
         }
-        /*
-        if(Input.GetKeyDown(KeyCode.E))
-        {
-            BakeryTakeDamage(20);
-        }
-        */
     }
 
     public void BakeryTakeDamage(float damage)
@@ -53,8 +47,6 @@ public class BakeryHealthManager : MonoBehaviour
         {
             bakeryStructure.TakeDamage((int)damage);
         }
-        //healthAmount -= damage;
-        //healthBar.fillAmount = healthAmount / 100f;
     }
 }
 
