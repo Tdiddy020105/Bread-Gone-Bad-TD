@@ -6,7 +6,13 @@ using UnityEngine;
 public class WaveManager : MonoBehaviour
 {
     public event EventHandler OnWaveNumberChanged;
+    
+    
 
+    //Temporary placeholder for the EnemySpawn script as object reference
+    
+    public EnemySpawn enemySpawn;
+    
     private enum WaveState
     {
         WaitingToSpawnNextWave,
@@ -25,6 +31,7 @@ public class WaveManager : MonoBehaviour
 
     private void Start()
     {
+        
         waveState = WaveState.WaitingToSpawnNextWave;
         spawnPosition = spawnPositionTransformList[UnityEngine.Random.Range(0, spawnPositionTransformList.Count)].position;
         nextWaveSpawnPositionTransform.position = spawnPosition;
@@ -49,7 +56,8 @@ public class WaveManager : MonoBehaviour
                     if(nextEnemySpawnTimer < 0f)
                     {
                         nextEnemySpawnTimer = UnityEngine.Random.Range(0f, 2f);
-                        //TODO Spawn enemy with enemy class
+                        //Uses the EnemySpawn script which instantiates a copy of the current enemy prefab using spawnPosition as vector3
+                        enemySpawn.Spawn(spawnPosition);
                         remainingEnemySpawnAmount--;
 
                         if(remainingEnemySpawnAmount <= 0)
