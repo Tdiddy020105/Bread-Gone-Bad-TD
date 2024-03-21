@@ -7,15 +7,11 @@ using UnityEngine.Tilemaps;
 
 public class GridManager : MonoBehaviour
 {
-    [SerializeField]
-    private int width;
-    [SerializeField]
-    private int height;
+    [SerializeField] private int width;
+    [SerializeField] private int height;
 
-    [SerializeField]
-    private Tile grassTile;
-    [SerializeField]
-    private Tile gravelTile;
+    [SerializeField] private Tile grassTile;
+    [SerializeField] private Tile gravelTile;
 
     //[SerializeField]
     //private Transform cam;
