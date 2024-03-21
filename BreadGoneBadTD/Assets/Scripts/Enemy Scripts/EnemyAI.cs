@@ -46,19 +46,6 @@ public class EnemyAI : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D trigger) {
-        //Debug.Log("Trigger Collsion");
-        //Check for a match with the specified target on any GameObject with a trigger that collides with your GameObject
-
-        /*
-        if (trigger.gameObject == target)
-        {
-            target.GetComponent<BakeryScript>().health -= this.attack;
-            Debug.Log("The bakery has been hit for " + this.attack + " damage!");
-            Debug.Log("The bakery is at " + target.GetComponent<BakeryScript>().health  + " health.");
-            Destroy(this.gameObject);
-        }
-        */
-
         AttackableStructure bakeryStructure = trigger.GetComponent<AttackableStructure>();
         if (bakeryStructure != null)
         {
@@ -68,5 +55,16 @@ public class EnemyAI : MonoBehaviour
             Debug.Log("The bakery is at " + bakeryStructure.GetHealth() + " health.");
             Destroy(gameObject);
         }
+    }
+
+    private void CanAttackStructure(AttackableStructure attackableStructure)
+    {
+        attackableStructure.TakeDamage(this.attack);
+        Destroy(gameObject);
+    }
+
+    private void CannotAttackStructure()
+    {
+
     }
 }

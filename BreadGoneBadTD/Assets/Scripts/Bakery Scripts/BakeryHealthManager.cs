@@ -7,7 +7,7 @@ public class BakeryHealthManager : MonoBehaviour
 {
 
     public Image healthBar;
-    public float healthAmount = 100f;
+    //public float healthAmount = 100f;
     public AttackableStructure bakeryStructure;
 
     // Start is called before the first frame update

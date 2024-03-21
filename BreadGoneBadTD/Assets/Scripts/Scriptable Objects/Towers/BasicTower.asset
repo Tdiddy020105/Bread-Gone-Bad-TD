@@ -9,11 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e370b28e33934554ebf1d19923bf8bc0, type: 3}
-  m_Name: Pan
+  m_Script: {fileID: 11500000, guid: e3e2996f9ee0e13b29445bc3bda48aef, type: 3}
+  m_Name: BasicTower
   m_EditorClassIdentifier: 
-  weaponName: Pan
-  damage: 5
-  attackRate: 1
-  range: 2
-  attackAreaPrefab: {fileID: 4576693704932570619, guid: bd22edbfae736164aa00c30c41daa7f1, type: 3}
+  attackRange: {x: 8, y: 8}
+  attackType: 0
+  attackDamage: 5
+  secondsBetweenAttacks: 2
