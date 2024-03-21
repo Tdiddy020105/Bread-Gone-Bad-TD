@@ -16,11 +16,24 @@ public class Tower : MonoBehaviour
 
     private void Update()
     {
+        if (this.enemiesWithinRange.Count == 0)
+        {
+            this.attackTimer = 0.0f;
+            return;
+        }
+
+        // Warning: This produces a bug where an enemy that immediately enters and leaves the trigger will always be attacked
+        //          This might be removed
+        if (this.attackTimer == 0.0f)
+        {
+            this.AttackEnemies();
+        }
+
         this.attackTimer += Time.deltaTime;
 
         if (this.attackTimer >= this.towerData.secondsBetweenAttacks)
         {
-            this.AttackEnemies();
+            this.attackTimer = 0.0f;
         }
     }
 
@@ -31,7 +44,9 @@ public class Tower : MonoBehaviour
         if (this.towerData.attackType == TowerAttackType.TARGET_FIRST_IN_RANGE)
         {
             EnemyAI enemy = this.enemiesWithinRange[0].GetComponent<EnemyAI>();
-            enemy.TakeDamage(this.towerData.attackDamage);
+            enemy?.TakeDamage(this.towerData.attackDamage);
+
+            Debug.Log($"Attack {this.enemiesWithinRange[0].name}");
 
             return;
         }
@@ -41,7 +56,9 @@ public class Tower : MonoBehaviour
             foreach (GameObject gameObject in this.enemiesWithinRange)
             {
                 EnemyAI enemy = gameObject.GetComponent<EnemyAI>();
-                enemy.TakeDamage(this.towerData.attackDamage);
+                enemy?.TakeDamage(this.towerData.attackDamage);
+
+                Debug.Log($"Attack {gameObject.name}");
             }
         }
     }
