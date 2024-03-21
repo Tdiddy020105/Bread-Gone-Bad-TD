@@ -102,7 +102,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 3710188333129727256}
   target: {fileID: 2277612423273325781, guid: 872100f6a36400a4bbf46d818eaee6af, type: 3}
-  attack: 0
+  attack: 5
+  health: 5
 --- !u!195 &3710188333129727256
 NavMeshAgent:
   m_ObjectHideFlags: 0

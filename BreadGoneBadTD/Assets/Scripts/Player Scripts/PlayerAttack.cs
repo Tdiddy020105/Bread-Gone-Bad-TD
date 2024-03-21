@@ -1,73 +1,98 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerAttack : MonoBehaviour
 {
-
     public WeaponData currentWeapon;
     public Transform attackAreaParent;
+    public Transform attackDirectionIndicator;
 
     private GameObject currentAttackArea;
     private bool attacking = false;
-    private float timetoAttack; // Declare timetoAttack here
+    private float timeToAttack;
     private float timer = 0f;
+    private Vector2 lastDirection = Vector2.zero;
+
+    private InputSystem inputSystem;
 
     public InputActionReference attackAction;
 
-    // Start is called before the first frame update
     void Start()
     {
-        InstantiateAttackArea(currentWeapon.attackAreaPrefab);
-        timetoAttack = 1f / currentWeapon.attackRate; 
+        Initialize();
     }
 
     void Update()
     {
-        // Check if the attack action is triggered
+        UpdateAttackDirection();
+        CheckAttack();
+        UpdateAttackTimer();
+    }
+
+    void Initialize()
+    {
+        inputSystem = GetComponent<InputSystem>();
+        InstantiateAttackArea(currentWeapon.attackAreaPrefab);
+        timeToAttack = 1f / currentWeapon.attackRate;
+    }
+
+    void UpdateAttackDirection()
+    {
+        Vector2 moveDirection = inputSystem.move.action.ReadValue<Vector2>();
+        if (moveDirection != Vector2.zero)
+        {
+            lastDirection = moveDirection.normalized;
+        }
+        attackDirectionIndicator.localPosition = lastDirection;
+    }
+
+    void CheckAttack()
+    {
         if (attackAction.action.triggered)
         {
             Attack();
         }
+    }
 
+    void UpdateAttackTimer()
+    {
         if (attacking)
         {
             timer += Time.deltaTime;
-
-            if (timer >= timetoAttack)
+            if (timer >= timeToAttack)
             {
                 timer = 0;
                 attacking = false;
-                currentAttackArea.SetActive(attacking);
+                currentAttackArea.SetActive(false);
             }
         }
     }
 
-    private void Attack()
+    void Attack()
     {
         attacking = true;
-        currentAttackArea.SetActive(attacking);
+        currentAttackArea.SetActive(true);
+        RotateAttackArea();
     }
 
-    private void InstantiateAttackArea(GameObject attackAreaPrefab)
+    void RotateAttackArea()
     {
-        // Instantiate or enable the attack area prefab based on the current weapon
+        float angle = Mathf.Atan2(lastDirection.y, lastDirection.x) * Mathf.Rad2Deg;
+        currentAttackArea.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+    }
+
+    void InstantiateAttackArea(GameObject attackAreaPrefab)
+    {
         if (attackAreaPrefab != null)
         {
-            // If an attack area already exists, destroy it first
             if (currentAttackArea != null)
             {
                 Destroy(currentAttackArea);
             }
-            
-            // Instantiate the attack area prefab as a child of the attackAreaParent
+
             currentAttackArea = Instantiate(attackAreaPrefab, attackAreaParent);
-            currentAttackArea.SetActive(false); // Deactivate initially
-
-
-            //Optional, ask for feedback
-            //currentAttackArea.transform.localScale = new Vector3(currentWeapon.range * 2, currentWeapon.range * 2, 1);
+            currentAttackArea.SetActive(false);
+            currentAttackArea.transform.rotation = Quaternion.identity;
         }
         else
         {
@@ -75,17 +100,13 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Enemy attacked");
-        // Check if currently attacking and collision is with enemy
         if (attacking && other.CompareTag("MeleeEnemy"))
         {
-            // Get the damage value from the current weapon
             int damage = currentWeapon.damage;
-            
-            // Handle damage
             other.GetComponent<EnemyAI>().TakeDamage(damage);
         }
     }
 }
+
