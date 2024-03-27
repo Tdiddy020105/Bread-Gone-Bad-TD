@@ -6,6 +6,7 @@ public class EnemySpawn : MonoBehaviour
 {
     // Reference to the Enemy Prefab. Drag a Prefab into this field in the Inspector.
     public GameObject enemyPrefab;
+    public GameObject bossPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -27,5 +28,15 @@ public class EnemySpawn : MonoBehaviour
     public void Spawn(Vector3 SpawnPosition)
     {
         Instantiate(enemyPrefab, SpawnPosition, Quaternion.identity);
+    }
+
+    public void SpawnBoss()
+    {
+        SpawnBoss(new Vector3(1,1,0));
+    }
+
+    public void SpawnBoss(Vector3 SpawnPositionBoss)
+    {
+        Instantiate(bossPrefab, SpawnPositionBoss, Quaternion.identity);
     }
 }
