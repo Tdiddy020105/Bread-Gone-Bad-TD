@@ -40,7 +40,7 @@ public class EnemyAI : MonoBehaviour
         if (this.health <= 0)
         {
             
-            this.enemyToPool.OnDestroyPooledObject(this.enemyToPool);
+            this.enemyToPool.OnReleaseToPool(this.enemyToPool);
         }
     } 
 
@@ -58,14 +58,14 @@ public class EnemyAI : MonoBehaviour
             bakeryStructure.TakeDamage(attack);
             Debug.Log("The bakery has been hit for " + attack + " damage!");
             Debug.Log("The bakery is at " + bakeryStructure.GetHealth() + " health.");
-            this.enemyToPool.OnDestroyPooledObject(this.enemyToPool);
+            this.enemyToPool.OnReleaseToPool(this.enemyToPool);
         }
     }
 
     private void CanAttackStructure(AttackableStructure attackableStructure)
     {
         attackableStructure.TakeDamage(this.attack);
-        this.enemyToPool.OnDestroyPooledObject(this.enemyToPool);
+        this.enemyToPool.OnReleaseToPool(this.enemyToPool);
     }
 
     private void CannotAttackStructure()

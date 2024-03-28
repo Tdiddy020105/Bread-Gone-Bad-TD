@@ -20,8 +20,8 @@ using UnityEngine.Pool;
         [SerializeField] private bool collectionCheck = true;
 
         // extra options to control the pool capacity and maximum size
-        [SerializeField] private int defaultCapacity = 20;
-        [SerializeField] private int maxSize = 100;
+        [SerializeField] public int defaultCapacity = 20;
+        [SerializeField] public int maxSize = 100;
 
         private float nextTimeToShoot;
 
@@ -30,20 +30,29 @@ using UnityEngine.Pool;
             objectPool = new ObjectPool<PooledObject>(CreateEnemy,
                 OnGetFromPool, OnReleaseToPool, OnDestroyPooledObject,
                 collectionCheck, defaultCapacity, maxSize);
+ 
         }
 
 
 
         // invoked when returning an item to the object pool
-        private void OnReleaseToPool(PooledObject pooledObject)
+        public void OnReleaseToPool(PooledObject pooledObject)
         {
             pooledObject.gameObject.SetActive(false);
         }
 
         // invoked when retrieving the next item from the object pool
-        private void OnGetFromPool(PooledObject pooledObject)
+        public void OnGetFromPool(PooledObject pooledObject)
         {
             pooledObject.gameObject.SetActive(true);
+        }
+
+        public PooledObject Spawn()
+        {
+                PooledObject enemyObject = objectPool.Get();            
+                enemyObject.ObjectPool = objectPool;
+                return enemyObject;
+                
         }
 
         // invoked when we exceed the maximum number of pooled items (i.e. destroy the pooled object)

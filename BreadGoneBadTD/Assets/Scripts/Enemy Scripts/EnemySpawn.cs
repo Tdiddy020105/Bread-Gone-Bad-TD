@@ -12,7 +12,9 @@ using UnityEngine;
         // Start is called before the first frame update
         void Start()
         {
-            
+            for(int i = 0; i < enemyToPool.maxSize; i++){
+                enemyToPool.CreateEnemy();
+            }
         }
 
         // Update is called once per frame
@@ -28,7 +30,8 @@ using UnityEngine;
 
         public void Spawn(Vector3 SpawnPosition)
         {
-            PooledObject enemyInstance = enemyToPool.CreateEnemy();
+            PooledObject enemyInstance = enemyToPool.Spawn(); // WIP
+            enemyInstance.gameObject.transform.position = SpawnPosition;
             enemyInstance.gameObject.SetActive(true);
             
         }
