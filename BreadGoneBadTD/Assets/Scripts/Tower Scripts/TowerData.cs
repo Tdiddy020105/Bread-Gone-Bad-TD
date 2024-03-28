@@ -17,4 +17,6 @@ public class TowerData : ScriptableObject
     [SerializeField] public int attackDamage;
 
     [SerializeField] public int secondsBetweenAttacks;
+    [SerializeField] public Sprite UIImage;
+    [SerializeField] public int cost;
 }

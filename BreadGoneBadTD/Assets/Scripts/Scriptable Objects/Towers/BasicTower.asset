@@ -16,3 +16,5 @@ MonoBehaviour:
   attackType: 0
   attackDamage: 5
   secondsBetweenAttacks: 2
+  UIImage: {fileID: 21300000, guid: 2b6e6829a8e4fd048af6ea5143e75071, type: 3}
+  cost: 100
