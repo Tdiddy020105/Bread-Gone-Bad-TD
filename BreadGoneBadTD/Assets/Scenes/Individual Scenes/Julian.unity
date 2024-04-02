@@ -577,9 +577,6 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1891767276238029064, guid: a8d7f438218f5b94284dc294c31e63e5, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1589313496}
-    - targetCorrespondingSourceObject: {fileID: 1891767276238029064, guid: a8d7f438218f5b94284dc294c31e63e5, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1589313497}
     - targetCorrespondingSourceObject: {fileID: 1891767276238029064, guid: a8d7f438218f5b94284dc294c31e63e5, type: 3}
       insertIndex: -1
@@ -590,23 +587,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1891767276238029064, guid: a8d7f438218f5b94284dc294c31e63e5, type: 3}
   m_PrefabInstance: {fileID: 1589313494}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1589313496
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1589313495}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5db56424b1335354c8b5d587b96116f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 8319205279498997210}
-  collectionCheck: 1
-  defaultCapacity: 20
-  maxSize: 100
-  nextTimeToShoot: 0
 --- !u!114 &1589313497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -621,6 +601,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyToPool: {fileID: 8319205279498997210}
   bossPrefab: {fileID: 7379256321918217176, guid: 246baec73a685264ea9501322b1b8323, type: 3}
+  collectionCheck: 1
+  defaultCapacity: 20
+  maxSize: 20
 --- !u!114 &1589313500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -831,6 +814,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1098794861}
     - target: {fileID: 6907391697334484364, guid: 190424ad3569598479dd76b3eb40adf8, type: 3}
+      propertyPath: objectPool
+      value: 
+      objectReference: {fileID: 1589313497}
+    - target: {fileID: 6907391697334484364, guid: 190424ad3569598479dd76b3eb40adf8, type: 3}
       propertyPath: enemyToPool
       value: 
       objectReference: {fileID: 8319205279498997210}
@@ -911,9 +898,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a214afd81a581e40b5e2dc2d3970ac9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectionCheck: 1
-  defaultCapacity: 20
-  maxSize: 100
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

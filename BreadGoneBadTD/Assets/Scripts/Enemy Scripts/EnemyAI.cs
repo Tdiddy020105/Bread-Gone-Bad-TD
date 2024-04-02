@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
 
 public class EnemyAI : MonoBehaviour
@@ -11,6 +12,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private int attack;
     [SerializeField] private int health; 
 
+    public EnemySpawn objectPool;
     [SerializeField] private PooledObject enemyToPool;
     
     
@@ -40,7 +42,7 @@ public class EnemyAI : MonoBehaviour
         if (this.health <= 0)
         {
             
-            this.enemyToPool.OnReleaseToPool(this.enemyToPool);
+            this.objectPool.OnReleaseToPool(this.enemyToPool);
         }
     } 
 
@@ -58,14 +60,14 @@ public class EnemyAI : MonoBehaviour
             bakeryStructure.TakeDamage(attack);
             Debug.Log("The bakery has been hit for " + attack + " damage!");
             Debug.Log("The bakery is at " + bakeryStructure.GetHealth() + " health.");
-            this.enemyToPool.OnReleaseToPool(this.enemyToPool);
+            this.objectPool.OnReleaseToPool(this.enemyToPool);
         }
     }
 
     private void CanAttackStructure(AttackableStructure attackableStructure)
     {
         attackableStructure.TakeDamage(this.attack);
-        this.enemyToPool.OnReleaseToPool(this.enemyToPool);
+        this.objectPool.OnReleaseToPool(this.enemyToPool);
     }
 
     private void CannotAttackStructure()
