@@ -12,8 +12,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private int attack;
     [SerializeField] private int health; 
 
-    public EnemySpawn objectPool;
-    [SerializeField] private PooledObject enemyToPool;
+
     
     
     
@@ -42,7 +41,7 @@ public class EnemyAI : MonoBehaviour
         if (this.health <= 0)
         {
             
-            this.objectPool.OnReleaseToPool(this.enemyToPool);
+            gameObject.SetActive(false);
         }
     } 
 
@@ -60,14 +59,14 @@ public class EnemyAI : MonoBehaviour
             bakeryStructure.TakeDamage(attack);
             Debug.Log("The bakery has been hit for " + attack + " damage!");
             Debug.Log("The bakery is at " + bakeryStructure.GetHealth() + " health.");
-            this.objectPool.OnReleaseToPool(this.enemyToPool);
+            gameObject.SetActive(false);
         }
     }
 
     private void CanAttackStructure(AttackableStructure attackableStructure)
     {
         attackableStructure.TakeDamage(this.attack);
-        this.objectPool.OnReleaseToPool(this.enemyToPool);
+        gameObject.SetActive(false);
     }
 
     private void CannotAttackStructure()
