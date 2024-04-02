@@ -306,6 +306,7 @@ GameObject:
   - component: {fileID: 220294364}
   - component: {fileID: 220294365}
   - component: {fileID: 220294366}
+  - component: {fileID: 220294367}
   m_Layer: 0
   m_Name: Tower
   m_TagString: Untagged
@@ -393,6 +394,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerData: {fileID: 11400000, guid: aea019364891e5d1984b4c6be3e057d6, type: 2}
+--- !u!114 &220294367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 220294363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 274fa497c292aaf8db010517e1909a67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgrades:
+  - upgrade: {fileID: 11400000, guid: 06ec9c283f2f6f25a81969b2270d381b, type: 2}
+    unlockCurrencyAmount: 69
+  - upgrade: {fileID: 11400000, guid: 7776ab60379ffdd628f17de8f1be414d, type: 2}
+    unlockCurrencyAmount: 420
+  - upgrade: {fileID: 11400000, guid: 594570a676a853a33a0d4a9af88ca750, type: 2}
+    unlockCurrencyAmount: 1337
 --- !u!1 &225583157
 GameObject:
   m_ObjectHideFlags: 0
@@ -402,6 +422,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 225583158}
+  - component: {fileID: 225583159}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
@@ -431,6 +452,19 @@ Transform:
   - {fileID: 363472315}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &225583159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 225583157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 617f0d721b9c504479d3eb3a0f7ed08e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tower: {fileID: 220294366}
 --- !u!1 &258029900
 GameObject:
   m_ObjectHideFlags: 0
