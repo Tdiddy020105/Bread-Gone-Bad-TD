@@ -13,6 +13,7 @@ public class Map : MonoBehaviour
     [Tooltip("Sets the height of the generated grid.")]
     [Range(1, 100)]
     private int height;
+    public int towersPlaced;
 
     [SerializeField] private Tile placeholderTile;
     [SerializeField] private Tile grassTile;
@@ -46,5 +47,9 @@ public class Map : MonoBehaviour
         {
             DestroyImmediate(tile);
         }
+    }
+
+    public void Towercount(){
+        towersPlaced++;
     }
 }

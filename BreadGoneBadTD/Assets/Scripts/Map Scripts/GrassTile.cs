@@ -10,6 +10,8 @@ public class GrassTile : Tile
 
     private bool hasTower = false;
 
+    [SerializeField] public Map towerScript;
+
     public override void Init(int x, int y)
     {
         var isOffset = (x + y) % 2 == 1;
@@ -22,6 +24,7 @@ public class GrassTile : Tile
         {
             Instantiate(tower, this.transform, false);
             Debug.Log($"Tile {name} was clicked");
+            towerScript.Towercount();
         }
 
         hasTower = true;

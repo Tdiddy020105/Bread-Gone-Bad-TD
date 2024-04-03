@@ -14,6 +14,8 @@ using UnityEngine.Pool;
         public GameObject objectToPool;
         public int amountToPool;
 
+        public int enemiesDefeated;
+
 
         // Start is called before the first frame update
         void Start()
@@ -77,6 +79,10 @@ using UnityEngine.Pool;
                 }
             }
             return null;
+        }
+
+        public void Killcount(){
+            enemiesDefeated++;
         }
     }
 

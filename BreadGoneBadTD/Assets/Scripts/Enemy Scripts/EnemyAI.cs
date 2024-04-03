@@ -13,6 +13,9 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private int health; 
     //For the sake of resetting health on SetActive(false) without hardcoding
     [SerializeField] private int baseHealth;
+    public int enemiesDefeated;
+
+    [SerializeField] public EnemySpawn spawnScript;
 
 
     
@@ -45,6 +48,7 @@ public class EnemyAI : MonoBehaviour
             //Disables the gameObject to be able to reinstantiate it through the pool instead of deleting it
             this.gameObject.SetActive(false);
             this.health = this.baseHealth;
+            spawnScript.Killcount();
         }
     } 
 
