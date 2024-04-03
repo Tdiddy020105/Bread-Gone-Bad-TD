@@ -13,6 +13,7 @@ using UnityEngine.Pool;
         public List<GameObject> pooledObjects;
         public GameObject objectToPool;
         public int amountToPool;
+        [SerializeField] public List<GameObject> Enemies = new();
 
 
         // Start is called before the first frame update
@@ -52,7 +53,8 @@ using UnityEngine.Pool;
             if (enemy != null) {
                 enemy.transform.position = SpawnPosition;
                 enemy.SetActive(true);
-            }
+                Enemies.Add(enemy);
+        }
             
         }
 
