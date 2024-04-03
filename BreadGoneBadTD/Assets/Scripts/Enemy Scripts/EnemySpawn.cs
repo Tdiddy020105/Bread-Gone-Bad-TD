@@ -8,9 +8,6 @@ using UnityEngine.Pool;
     {
         // Reference to the Enemy Prefab. Drag a Prefab into this field in the Inspector.
         public GameObject enemyPrefab;
-
-
-        
         public GameObject bossPrefab;
         public static ObjectPool<GameObject> SharedInstance;
         public List<GameObject> pooledObjects;
@@ -21,6 +18,7 @@ using UnityEngine.Pool;
         // Start is called before the first frame update
         void Start()
         {
+            //Creates the object pool based on amountToPool int as total
             pooledObjects = new List<GameObject>();
             GameObject tmp;
             for(int i = 0; i < amountToPool; i++)
@@ -49,7 +47,7 @@ using UnityEngine.Pool;
 
         public void Spawn(Vector3 SpawnPosition)
         {
-            //Gets an already existing enemy from CreateEnemy() through objectPool.OnGetFromPool which.. makes a new enemy?
+            //Checks the object pool for a non-instantiated object and spawns the enemy as that
             GameObject enemy = GetPooledObject(); 
             if (enemy != null) {
                 enemy.transform.position = SpawnPosition;

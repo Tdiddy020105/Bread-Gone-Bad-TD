@@ -11,6 +11,8 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private GameObject target;
     [SerializeField] private int attack;
     [SerializeField] private int health; 
+    //For the sake of resetting health on SetActive(false) without hardcoding
+    [SerializeField] private int baseHealth;
 
 
     
@@ -27,7 +29,7 @@ public class EnemyAI : MonoBehaviour
         //Stops the agent from rotating as it often likes to do before setting a destination; causing it to rotate out of the game in 2D.
 		agent.updateRotation = false;
 		agent.updateUpAxis = false;
-        
+        baseHealth = health;
     }
 
     // Update is called once per frame
@@ -40,8 +42,9 @@ public class EnemyAI : MonoBehaviour
 
         if (this.health <= 0)
         {
-            
-            gameObject.SetActive(false);
+            //Disables the gameObject to be able to reinstantiate it through the pool instead of deleting it
+            this.gameObject.SetActive(false);
+            this.health = this.baseHealth;
         }
     } 
 
@@ -59,14 +62,16 @@ public class EnemyAI : MonoBehaviour
             bakeryStructure.TakeDamage(attack);
             Debug.Log("The bakery has been hit for " + attack + " damage!");
             Debug.Log("The bakery is at " + bakeryStructure.GetHealth() + " health.");
-            gameObject.SetActive(false);
+            this.gameObject.SetActive(false);
+            this.health = this.baseHealth;
         }
     }
 
     private void CanAttackStructure(AttackableStructure attackableStructure)
     {
         attackableStructure.TakeDamage(this.attack);
-        gameObject.SetActive(false);
+        this.gameObject.SetActive(false);
+        this.health = this.baseHealth;
     }
 
     private void CannotAttackStructure()

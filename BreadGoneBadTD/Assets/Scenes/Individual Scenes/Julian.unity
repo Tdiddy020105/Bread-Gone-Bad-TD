@@ -766,12 +766,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 198917558304541614, guid: 190424ad3569598479dd76b3eb40adf8, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198917558304541614, guid: 190424ad3569598479dd76b3eb40adf8, type: 3}
       propertyPath: m_CollisionDetection
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3710188333129727256, guid: 190424ad3569598479dd76b3eb40adf8, type: 3}
       propertyPath: m_Speed
-      value: 0
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 4908466055324217435, guid: 190424ad3569598479dd76b3eb40adf8, type: 3}
       propertyPath: m_IsTrigger
