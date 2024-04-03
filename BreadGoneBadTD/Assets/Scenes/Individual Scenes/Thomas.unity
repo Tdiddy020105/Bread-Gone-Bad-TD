@@ -599,12 +599,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2611566833391638737, guid: 1fa3660252106384bbb1489979a317e1, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1960489816}
     - target: {fileID: 3214845257247940810, guid: 1fa3660252106384bbb1489979a317e1, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -533657871, guid: a897a517a9011334c88aa3faeb575a5e, type: 3}
+      objectReference: {fileID: -535705562, guid: a3b7be77067cde84ca200e2f612f588f, type: 3}
     - target: {fileID: 3214845257247940810, guid: 1fa3660252106384bbb1489979a317e1, type: 3}
       propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3214845257247940810, guid: 1fa3660252106384bbb1489979a317e1, type: 3}
+      propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4779252013123146425, guid: 1fa3660252106384bbb1489979a317e1, type: 3}
