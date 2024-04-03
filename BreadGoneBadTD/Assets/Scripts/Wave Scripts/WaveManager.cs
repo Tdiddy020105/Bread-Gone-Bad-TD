@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace DesignPatterns.EnemyPool
+{
 public class WaveManager : MonoBehaviour
 {
     public event EventHandler OnWaveNumberChanged;
@@ -107,4 +109,5 @@ public class WaveManager : MonoBehaviour
         
 
     }
+}
 }
