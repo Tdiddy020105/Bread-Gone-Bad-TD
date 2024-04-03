@@ -13,7 +13,7 @@ public class Currency : MonoBehaviour
 
     void Start()
     {
-        textMeshPro = GetComponentInChildren<TMPro.TextMeshProUGUI>();
+        textMeshPro = GetComponentInChildren<TextMeshProUGUI>();
         textMeshPro.text = amount.ToString();
         color = textMeshPro.color;
     }
