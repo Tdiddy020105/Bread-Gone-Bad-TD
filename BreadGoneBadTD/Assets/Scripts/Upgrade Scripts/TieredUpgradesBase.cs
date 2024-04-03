@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public abstract class UpgradesBase<T> : MonoBehaviour, IUpgrades<T> where T : ScriptableObject
+public abstract class TieredUpgradesBase<T> : MonoBehaviour, ITieredUpgrades<T> where T : ScriptableObject
 {
     protected int unlockedIndex = -1;
 
@@ -19,7 +19,7 @@ public abstract class UpgradesBase<T> : MonoBehaviour, IUpgrades<T> where T : Sc
         // Calculate the range of unlockable tiers based on the total player currency amount
         int totalCurrencyNeeded = 0;
         int totalUnlockableTiers = 0;
-        List<UpgradeTier<T>> tiers = this.GetTiers();
+        List<Upgrade<T>> tiers = this.GetTiers();
 
         for (int i = this.unlockedIndex + 1; i < tiers.Count; i += 1)
         {
@@ -43,8 +43,8 @@ public abstract class UpgradesBase<T> : MonoBehaviour, IUpgrades<T> where T : Sc
             return;
         }
 
-        List<UpgradeTier<T>> tiers = this.GetTiers();
-        UpgradeTier<T> tierToUnlock = tiers[this.unlockedIndex + 1];
+        List<Upgrade<T>> tiers = this.GetTiers();
+        Upgrade<T> tierToUnlock = tiers[this.unlockedIndex + 1];
 
         if (totalPlayerCurrency < tierToUnlock.unlockCurrencyAmount)
         {
@@ -70,8 +70,8 @@ public abstract class UpgradesBase<T> : MonoBehaviour, IUpgrades<T> where T : Sc
         }
 
         // Retrieves all unlocked tiers and filters out the "upgradeCurrencyAmount" parameter
-        return this.GetTiers().GetRange(0, this.unlockedIndex + 1).Select((tier) => tier.upgrade).ToList();
+        return this.GetTiers().GetRange(0, this.unlockedIndex + 1).Select((tier) => tier.settings).ToList();
     }
 
-    abstract public List<UpgradeTier<T>> GetTiers();
+    abstract public List<Upgrade<T>> GetTiers();
 }

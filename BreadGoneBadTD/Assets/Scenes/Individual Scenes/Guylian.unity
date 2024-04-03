@@ -407,11 +407,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgrades:
-  - upgrade: {fileID: 11400000, guid: 06ec9c283f2f6f25a81969b2270d381b, type: 2}
+  - settings: {fileID: 11400000, guid: 06ec9c283f2f6f25a81969b2270d381b, type: 2}
     unlockCurrencyAmount: 69
-  - upgrade: {fileID: 11400000, guid: 7776ab60379ffdd628f17de8f1be414d, type: 2}
+  - settings: {fileID: 11400000, guid: 7776ab60379ffdd628f17de8f1be414d, type: 2}
     unlockCurrencyAmount: 420
-  - upgrade: {fileID: 11400000, guid: 594570a676a853a33a0d4a9af88ca750, type: 2}
+  - settings: {fileID: 11400000, guid: 594570a676a853a33a0d4a9af88ca750, type: 2}
     unlockCurrencyAmount: 1337
 --- !u!1 &225583157
 GameObject:

@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TowerUpgrades : UpgradesBase<TowerData>
+public class TowerUpgrades : TieredUpgradesBase<TowerData>
 {
     [SerializeField]
-    private List<UpgradeTier<TowerData>> upgrades = new();
+    private List<Upgrade<TowerData>> upgrades = new();
 
-    public override List<UpgradeTier<TowerData>> GetTiers()
+    public override List<Upgrade<TowerData>> GetTiers()
     {
         return this.upgrades;
     }

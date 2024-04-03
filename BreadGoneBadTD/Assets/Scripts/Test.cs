@@ -65,6 +65,7 @@ public class Test : MonoBehaviour
         #region Upgrade test
         this.towerUpgrades = this.tower.GetComponent<TowerUpgrades>();
 
+        this.OutputTowerUpgrades();
         Debug.Log($"Can unlock {this.towerUpgrades.UnlockableTierAmount(this.playerCurrency)} tiers");
 
         this.towerUpgrades.UnlockFirstAvailableTier(this.playerCurrency);

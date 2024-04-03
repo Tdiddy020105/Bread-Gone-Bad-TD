@@ -2,8 +2,8 @@ using System;
 using UnityEngine;
 
 [Serializable]
-public class UpgradeTier<T> where T : ScriptableObject
+public class Upgrade<T> where T : ScriptableObject
 {
-    [SerializeField] public T upgrade;
+    [SerializeField] public T settings;
     [SerializeField] public int unlockCurrencyAmount;
 }
