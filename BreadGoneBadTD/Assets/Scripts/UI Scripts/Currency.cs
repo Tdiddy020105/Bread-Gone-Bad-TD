@@ -3,16 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Currency : MonoBehaviour
 {
     [SerializeField] private int amount;
     private TextMeshProUGUI textMeshPro;
+    private Color color;
 
     void Start()
     {
-        textMeshPro = GetComponentInChildren<TMPro.TextMeshProUGUI>();
+        textMeshPro = GetComponentInChildren<TextMeshProUGUI>();
         textMeshPro.text = amount.ToString();
+        color = textMeshPro.color;
     }
 
     public void Spend(int cost)
@@ -24,7 +27,7 @@ public class Currency : MonoBehaviour
         }
         else
         {
-            // enable & disable the display of error message that you don't have enough currency
+            StartCoroutine(FlashRed());
         }
     }
 
@@ -37,5 +40,14 @@ public class Currency : MonoBehaviour
     private Boolean CheckAmount(int cost)
     {
         return amount >= cost;
+    }
+
+    private IEnumerator FlashRed()
+    {
+        GetComponent<Image>().color = Color.red;
+        textMeshPro.color = Color.red;
+        yield return new WaitForSeconds(1);
+        GetComponent<Image>().color = Color.white;
+        textMeshPro.color = color;
     }
 }
