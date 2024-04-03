@@ -376,6 +376,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 225182235}
   bossPrefab: {fileID: 1981183834}
+  Enemies: []
 --- !u!4 &1307323023
 Transform:
   m_ObjectHideFlags: 0
