@@ -7,6 +7,7 @@ public class EnemySpawn : MonoBehaviour
     // Reference to the Enemy Prefab. Drag a Prefab into this field in the Inspector.
     public GameObject enemyPrefab;
     public GameObject bossPrefab;
+    [SerializeField] public List<GameObject> Enemies = new();
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +28,9 @@ public class EnemySpawn : MonoBehaviour
 
     public void Spawn(Vector3 SpawnPosition)
     {
-        Instantiate(enemyPrefab, SpawnPosition, Quaternion.identity);
+        GameObject enemy = Instantiate(enemyPrefab, SpawnPosition, Quaternion.identity);
+        Enemies.Add(enemy);
+
     }
 
     public void SpawnBoss()
