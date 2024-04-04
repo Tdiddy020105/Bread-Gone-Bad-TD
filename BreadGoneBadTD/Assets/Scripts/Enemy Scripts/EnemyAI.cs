@@ -11,6 +11,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private GameObject target;
     [SerializeField] private int attack;
     [SerializeField] private int health;
+    [SerializeField] private int baseHealth;
     [SerializeField] private int currencyValue;
     
     

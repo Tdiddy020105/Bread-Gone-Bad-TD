@@ -104,7 +104,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 8030294927193793551}
   camera: {fileID: 0}
-  enemy: {fileID: 0}
+  enemy: {fileID: 8316998633669316809, guid: 190424ad3569598479dd76b3eb40adf8, type: 3}
   offset: {x: 0, y: 0.7, z: 0}
 --- !u!1 &1278554483930772235
 GameObject:

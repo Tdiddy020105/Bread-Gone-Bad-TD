@@ -12,8 +12,7 @@ public class BakeryHealthBar : MonoBehaviour
 
     void Start()
     {
-        life = 40f;
-        // life = bakery.GetComponent<AttackableStructure>().GetHealth();
+        life = bakery.GetComponent<AttackableStructure>().GetHealth();
         maxLife = life;
     }
 
@@ -24,12 +23,12 @@ public class BakeryHealthBar : MonoBehaviour
             life = 0;
             healthBar.fillAmount = life / maxLife;
         }
-        /*
+        
         else if (life != bakery.GetComponent<AttackableStructure>().GetHealth() && life > 0)
         {
             life = bakery.GetComponent<AttackableStructure>().GetHealth();
             healthBar.fillAmount = life / maxLife;
         }
-        */
+        
     }
 }

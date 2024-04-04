@@ -11,12 +11,12 @@ public class CurrencyManager
 
     static CurrencyManager()
     {
-
+        
     }
 
     private CurrencyManager()
     {
-
+    
     }
 
     public static CurrencyManager Instance
