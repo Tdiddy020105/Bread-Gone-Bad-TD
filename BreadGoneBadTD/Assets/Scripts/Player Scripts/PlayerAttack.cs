@@ -79,6 +79,7 @@ public class PlayerAttack : MonoBehaviour
     {
         float angle = Mathf.Atan2(lastDirection.y, lastDirection.x) * Mathf.Rad2Deg;
         currentAttackArea.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        currentAttackArea.transform.position = attackDirectionIndicator.position;
     }
 
     void InstantiateAttackArea(GameObject attackAreaPrefab)

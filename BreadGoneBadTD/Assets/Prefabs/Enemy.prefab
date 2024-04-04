@@ -32,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 13.412078, y: 13.412078, z: 13.412078}
+  m_LocalScale: {x: 8, y: 8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2055576116173142370}
@@ -173,7 +173,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.2, y: 0.2}
   m_EdgeRadius: 0
 --- !u!50 &198917558304541614
 Rigidbody2D:
@@ -238,18 +238,18 @@ PrefabInstance:
     - target: {fileID: 193395083793335035, guid: 5bd027b97cd43544b9243e633794b504, type: 3}
       propertyPath: camera
       value: 
-      objectReference: {fileID: 6317979068745063495, guid: 12184119513b1e94286e7a47f6e582f9, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 193395083793335035, guid: 5bd027b97cd43544b9243e633794b504, type: 3}
       propertyPath: offset.y
       value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 2142876074384841369, guid: 5bd027b97cd43544b9243e633794b504, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2142876074384841369, guid: 5bd027b97cd43544b9243e633794b504, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5660426897446446684, guid: 5bd027b97cd43544b9243e633794b504, type: 3}
       propertyPath: m_Pivot.x
