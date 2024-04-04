@@ -31,7 +31,7 @@ public class AttackableStructureRange : MonoBehaviour
     {
         AttackableStructure attackableStructure = this.GetComponentInParent<AttackableStructure>();
 
-        if (collider.tag != this.attackPerimeter.tag || attackableStructure == null)
+        if (collider.tag != this.attackPerimeter.tag || attackableStructure == null || !collider.gameObject.activeSelf)
         {
             return;
         }
@@ -41,7 +41,7 @@ public class AttackableStructureRange : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collider)
     {
-        if (collider.tag != this.attackPerimeter.tag)
+        if (collider.tag != this.attackPerimeter.tag || !collider.gameObject.activeSelf)
         {
             return;
         }
