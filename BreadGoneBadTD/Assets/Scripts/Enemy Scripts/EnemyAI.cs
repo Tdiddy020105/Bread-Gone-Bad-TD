@@ -10,12 +10,8 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private UnityEngine.AI.NavMeshAgent agent;
     [SerializeField] private GameObject target;
     [SerializeField] private int attack;
-    [SerializeField] private int health; 
-    //For the sake of resetting health on SetActive(false) without hardcoding
-    [SerializeField] private int baseHealth;
-
-
-    
+    [SerializeField] private int health;
+    [SerializeField] private int currencyValue;
     
     
     
@@ -45,6 +41,8 @@ public class EnemyAI : MonoBehaviour
             //Disables the gameObject to be able to reinstantiate it through the pool instead of deleting it
             this.gameObject.SetActive(false);
             this.health = this.baseHealth;
+            CurrencyManager.Instance.Earn(this.currencyValue);
+            Destroy(this.gameObject);
         }
     } 
 
