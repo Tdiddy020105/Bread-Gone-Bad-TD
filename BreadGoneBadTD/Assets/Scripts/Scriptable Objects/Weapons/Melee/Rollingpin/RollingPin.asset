@@ -15,5 +15,5 @@ MonoBehaviour:
   weaponName: Rolling Pin
   damage: 5
   attackRate: 4
-  range: 4
+  range: 0
   attackAreaPrefab: {fileID: 6279687360568127560, guid: 7839a76ea6d14b34082116149c748af3, type: 3}

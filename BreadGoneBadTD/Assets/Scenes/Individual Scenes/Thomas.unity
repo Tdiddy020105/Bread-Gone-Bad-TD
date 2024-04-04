@@ -538,7 +538,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 911677250}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 17e3f94019ddf5d469c7ab1c3aa0b28e, type: 2}
   m_CullingMode: 0
@@ -559,6 +559,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 411748140468605230, guid: 1fa3660252106384bbb1489979a317e1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1324200337708802570, guid: 1fa3660252106384bbb1489979a317e1, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.85359585
@@ -606,7 +610,7 @@ PrefabInstance:
     - target: {fileID: 3214845257247940810, guid: 1fa3660252106384bbb1489979a317e1, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -535705562, guid: a3b7be77067cde84ca200e2f612f588f, type: 3}
+      objectReference: {fileID: 7482667652216324306, guid: 650f61b088a344841bf911b2553e7600, type: 3}
     - target: {fileID: 3214845257247940810, guid: 1fa3660252106384bbb1489979a317e1, type: 3}
       propertyPath: m_SortingOrder
       value: 1

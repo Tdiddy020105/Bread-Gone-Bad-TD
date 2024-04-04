@@ -14,6 +14,7 @@ public class PlayerAttack : MonoBehaviour
     private Vector2 lastDirection = Vector2.zero;
 
     private InputSystem inputSystem;
+    private Transform playerTransform; // Reference to the player's transform
 
     public InputActionReference attackAction;
 
@@ -25,13 +26,23 @@ public class PlayerAttack : MonoBehaviour
     void Update()
     {
         UpdateAttackDirection();
+        RotateAttackArea(); // Call RotateAttackArea() continuously
         CheckAttack();
         UpdateAttackTimer();
     }
+/*
+    void Initialize()
+    {
+        inputSystem = GetComponent<InputSystem>();
+        InstantiateAttackArea(currentWeapon.attackAreaPrefab);
+        timeToAttack = 1f / currentWeapon.attackRate;
+    }
+*/
 
     void Initialize()
     {
         inputSystem = GetComponent<InputSystem>();
+        playerTransform = transform; // Set playerTransform to the player's transform
         InstantiateAttackArea(currentWeapon.attackAreaPrefab);
         timeToAttack = 1f / currentWeapon.attackRate;
     }
@@ -74,13 +85,30 @@ public class PlayerAttack : MonoBehaviour
         currentAttackArea.SetActive(true);
         RotateAttackArea();
     }
-
+/*
     void RotateAttackArea()
     {
         float angle = Mathf.Atan2(lastDirection.y, lastDirection.x) * Mathf.Rad2Deg;
         currentAttackArea.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         currentAttackArea.transform.position = attackDirectionIndicator.position;
     }
+*/
+
+void RotateAttackArea()
+{
+    float angle = Mathf.Atan2(lastDirection.y, lastDirection.x) * Mathf.Rad2Deg;
+    currentAttackArea.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+    // Convert the player's position to Vector2 and calculate the attack offset
+    Vector2 playerPosition = playerTransform.position;
+    Vector2 attackOffset = playerPosition + (lastDirection.normalized * currentWeapon.range);
+    
+    // Set the position of the attack area
+    currentAttackArea.transform.position = attackOffset;
+}
+
+
+
 
     void InstantiateAttackArea(GameObject attackAreaPrefab)
     {
