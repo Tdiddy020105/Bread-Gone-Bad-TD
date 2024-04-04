@@ -7,47 +7,43 @@ using UnityEngine.UI;
 
 public class Currency : MonoBehaviour
 {
-    [SerializeField] private int amount;
+    //[SerializeField] private int amount;
     private TextMeshProUGUI textMeshPro;
     private Color color;
 
     void Start()
     {
-        textMeshPro = GetComponentInChildren<TextMeshProUGUI>();
-        textMeshPro.text = amount.ToString();
-        color = textMeshPro.color;
+        textMeshPro = GetComponentInChildren<TMPro.TextMeshProUGUI>();
+        //textMeshPro.text = amount.ToString();
+        textMeshPro.text = CurrencyManager.Instance.GetCurrencyAmount().ToString();
     }
 
-    public void Spend(int cost)
+    private void Update()
     {
-        if (CheckAmount(cost))
-        {
-            amount -= cost;
-            textMeshPro.text = amount.ToString();
-        }
-        else
-        {
-            StartCoroutine(FlashRed());
-        }
+        textMeshPro.text = CurrencyManager.Instance.GetCurrencyAmount().ToString();
     }
 
-    public void Obtain(int income)
-    {
-        amount += income;
-        textMeshPro.text = amount.ToString();
-    }
+    //public void Spend(int cost)
+    //{
+    //    if (CheckAmount(cost))
+    //    {
+    //        amount -= cost;
+    //        textMeshPro.text = amount.ToString();
+    //    }
+    //    else
+    //    {
+    //        // enable & disable the display of error message that you don't have enough currency
+    //    }
+    //}
 
-    private Boolean CheckAmount(int cost)
-    {
-        return amount >= cost;
-    }
+    //public void Obtain(int income)
+    //{
+    //    amount += income;
+    //    textMeshPro.text = amount.ToString();
+    //}
 
-    private IEnumerator FlashRed()
-    {
-        GetComponent<Image>().color = Color.red;
-        textMeshPro.color = Color.red;
-        yield return new WaitForSeconds(1);
-        GetComponent<Image>().color = Color.white;
-        textMeshPro.color = color;
-    }
+    //private Boolean CheckAmount(int cost)
+    //{
+    //    return amount >= cost;
+    //}
 }
