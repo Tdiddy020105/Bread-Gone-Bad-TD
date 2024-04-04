@@ -8,7 +8,8 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private UnityEngine.AI.NavMeshAgent agent;
     [SerializeField] private GameObject target;
     [SerializeField] private int attack;
-    [SerializeField] private int health; 
+    [SerializeField] private int health;
+    [SerializeField] private int currencyValue;
     
     
     
@@ -35,6 +36,7 @@ public class EnemyAI : MonoBehaviour
 
         if (this.health <= 0)
         {
+            CurrencyManager.Instance.Earn(this.currencyValue);
             Destroy(this.gameObject);
         }
     } 

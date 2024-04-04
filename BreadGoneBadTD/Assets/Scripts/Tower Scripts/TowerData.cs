@@ -15,6 +15,7 @@ public class TowerData : ScriptableObject
     [SerializeField] public Vector2 attackRange;
     [SerializeField] public TowerAttackType attackType;
     [SerializeField] public int attackDamage;
-
+    [SerializeField] public int price;
+    
     [SerializeField] public int secondsBetweenAttacks;
 }
