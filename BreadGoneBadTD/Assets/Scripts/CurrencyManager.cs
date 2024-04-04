@@ -7,7 +7,7 @@ public class CurrencyManager
 {
     private static readonly CurrencyManager instance = new CurrencyManager();
 
-    private int currencyAmount;
+    private int currencyAmount = 0;
 
     static CurrencyManager()
     {

@@ -6,36 +6,42 @@ using UnityEngine;
 
 public class Currency : MonoBehaviour
 {
-    [SerializeField] private int amount;
+    //[SerializeField] private int amount;
     private TextMeshProUGUI textMeshPro;
 
     void Start()
     {
         textMeshPro = GetComponentInChildren<TMPro.TextMeshProUGUI>();
-        textMeshPro.text = amount.ToString();
+        //textMeshPro.text = amount.ToString();
+        textMeshPro.text = CurrencyManager.Instance.GetCurrencyAmount().ToString();
     }
 
-    public void Spend(int cost)
+    private void Update()
     {
-        if (CheckAmount(cost))
-        {
-            amount -= cost;
-            textMeshPro.text = amount.ToString();
-        }
-        else
-        {
-            // enable & disable the display of error message that you don't have enough currency
-        }
+        textMeshPro.text = CurrencyManager.Instance.GetCurrencyAmount().ToString();
     }
 
-    public void Obtain(int income)
-    {
-        amount += income;
-        textMeshPro.text = amount.ToString();
-    }
+    //public void Spend(int cost)
+    //{
+    //    if (CheckAmount(cost))
+    //    {
+    //        amount -= cost;
+    //        textMeshPro.text = amount.ToString();
+    //    }
+    //    else
+    //    {
+    //        // enable & disable the display of error message that you don't have enough currency
+    //    }
+    //}
 
-    private Boolean CheckAmount(int cost)
-    {
-        return amount >= cost;
-    }
+    //public void Obtain(int income)
+    //{
+    //    amount += income;
+    //    textMeshPro.text = amount.ToString();
+    //}
+
+    //private Boolean CheckAmount(int cost)
+    //{
+    //    return amount >= cost;
+    //}
 }
