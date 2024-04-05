@@ -8,6 +8,7 @@ public class TowerUI : MonoBehaviour
 {
     [SerializeField] List<TowerData> towers = new List<TowerData>();
     [SerializeField] GameObject TowerUIElementPrefab;
+    [SerializeField] GameObject TowerUIContent;
 
     void Start()
     {
@@ -26,7 +27,7 @@ public class TowerUI : MonoBehaviour
         button.GetComponent<Image>().sprite = tower.UIImage;
         textMeshPro.text = tower.cost.ToString();
         GameObject InstantiatedObj = Instantiate(obj);
-        InstantiatedObj.transform.SetParent(transform);
+        InstantiatedObj.transform.SetParent(TowerUIContent.transform);
         InstantiatedObj.transform.localScale = new Vector3(1f, 1f, 1f);
     }
 }

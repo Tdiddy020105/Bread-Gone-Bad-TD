@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3986857568624393114}
   - component: {fileID: 6384260873046178728}
   - component: {fileID: 4997635039119997516}
-  - component: {fileID: 6628052102694716824}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -78,21 +77,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 2
---- !u!114 &6628052102694716824
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 432537640277343837}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4ccc66c3a5eea3458ad19e04ace208d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  towers:
-  - {fileID: 11400000, guid: 5b7e422112486af4cbc6d411429f3efc, type: 2}
-  TowerUIElementPrefab: {fileID: 8246430067110099929, guid: db1a15e075e361a4e87e75332a3146c6, type: 3}
 --- !u!1 &1146916917722264029
 GameObject:
   m_ObjectHideFlags: 0
@@ -829,7 +813,6 @@ GameObject:
   - component: {fileID: 1200025352441711020}
   - component: {fileID: 2572482684820280959}
   - component: {fileID: 7009568586968352208}
-  - component: {fileID: 8491546361727195367}
   m_Layer: 5
   m_Name: Currency
   m_TagString: Untagged
@@ -895,19 +878,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8491546361727195367
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6010249048117841034}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4716bf51f1a98e8479e895c83d27de37, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  amount: 70
 --- !u!1 &6496828845394388303
 GameObject:
   m_ObjectHideFlags: 0
@@ -1171,11 +1141,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a45079401ee45364abbca91306963757, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 54c7510a66a481a48a40ec36eeb844ba, type: 3}
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -1192,7 +1162,6 @@ GameObject:
   - component: {fileID: 4673624722857966541}
   - component: {fileID: 3058405208005390518}
   - component: {fileID: 163927827600117803}
-  - component: {fileID: 4297669794459790378}
   m_Layer: 5
   m_Name: BakeryHealthBorder
   m_TagString: Untagged
@@ -1259,20 +1228,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &4297669794459790378
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8648946747641747983}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 911e68d1d4ef730488f06a4931177e9b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bakery: {fileID: 0}
-  healthBar: {fileID: 3237888347372633748}
 --- !u!1 &8974413861717450555
 GameObject:
   m_ObjectHideFlags: 0
