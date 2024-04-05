@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,10 +15,11 @@ using UnityEngine.Pool;
         public GameObject objectToPool;
         public int amountToPool;
         [SerializeField] public List<GameObject> Enemies = new();
+    public static event Action OnEnemiesKilled;
 
 
-        // Start is called before the first frame update
-        void Start()
+    // Start is called before the first frame update
+    void Start()
         {
             //Creates the object pool based on amountToPool int as total
             pooledObjects = new List<GameObject>();
@@ -83,6 +85,7 @@ using UnityEngine.Pool;
 
         public void EnemyRemove(GameObject enemy){
             Enemies.Remove(enemy);
+        OnEnemiesKilled();
         }
     }
 

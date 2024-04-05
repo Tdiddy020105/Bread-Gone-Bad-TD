@@ -64,6 +64,7 @@ public class EnemyAI : MonoBehaviour
             Debug.Log("The bakery is at " + bakeryStructure.GetHealth() + " health.");
             this.gameObject.SetActive(false);
             this.health = this.baseHealth;
+            enemySpawn.EnemyRemove(this.gameObject);
         }
     }
 
@@ -72,6 +73,7 @@ public class EnemyAI : MonoBehaviour
         attackableStructure.TakeDamage(this.attack);
         this.gameObject.SetActive(false);
         this.health = this.baseHealth;
+        enemySpawn.EnemyRemove(this.gameObject);
     }
 
     private void CannotAttackStructure()
