@@ -604,6 +604,7 @@ MonoBehaviour:
   pooledObjects: []
   objectToPool: {fileID: 8319205279498997209}
   amountToPool: 100
+  Enemies: []
 --- !u!114 &1589313500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -770,12 +771,48 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 198917558304541614, guid: 190424ad3569598479dd76b3eb40adf8, type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198917558304541614, guid: 190424ad3569598479dd76b3eb40adf8, type: 3}
+      propertyPath: m_SleepingMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198917558304541614, guid: 190424ad3569598479dd76b3eb40adf8, type: 3}
       propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198917558304541614, guid: 190424ad3569598479dd76b3eb40adf8, type: 3}
+      propertyPath: m_UseFullKinematicContacts
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3710188333129727256, guid: 190424ad3569598479dd76b3eb40adf8, type: 3}
       propertyPath: m_Speed
-      value: 0.1
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710188333129727256, guid: 190424ad3569598479dd76b3eb40adf8, type: 3}
+      propertyPath: m_Height
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710188333129727256, guid: 190424ad3569598479dd76b3eb40adf8, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710188333129727256, guid: 190424ad3569598479dd76b3eb40adf8, type: 3}
+      propertyPath: m_WalkableMask
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 4908466055324217435, guid: 190424ad3569598479dd76b3eb40adf8, type: 3}
+      propertyPath: m_Size.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4908466055324217435, guid: 190424ad3569598479dd76b3eb40adf8, type: 3}
+      propertyPath: m_Size.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4908466055324217435, guid: 190424ad3569598479dd76b3eb40adf8, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4908466055324217435, guid: 190424ad3569598479dd76b3eb40adf8, type: 3}
       propertyPath: m_IsTrigger
@@ -838,6 +875,14 @@ PrefabInstance:
       value: MeleeEnemy
       objectReference: {fileID: 0}
     - target: {fileID: 8316998633669316809, guid: 190424ad3569598479dd76b3eb40adf8, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316998633669316809, guid: 190424ad3569598479dd76b3eb40adf8, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316998633669316809, guid: 190424ad3569598479dd76b3eb40adf8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5
       objectReference: {fileID: 0}
@@ -876,6 +921,10 @@ PrefabInstance:
     - target: {fileID: 8316998633669316809, guid: 190424ad3569598479dd76b3eb40adf8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9029180737798654853, guid: 190424ad3569598479dd76b3eb40adf8, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

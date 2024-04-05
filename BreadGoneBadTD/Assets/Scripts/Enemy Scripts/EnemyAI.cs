@@ -13,12 +13,13 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private int health;
     [SerializeField] private int baseHealth;
     [SerializeField] private int currencyValue;
-    
-    
-    
+
+    public EnemySpawn enemySpawn;
+
     // Start is called before the first frame update
     void Start()
     {
+        
         // Messy fix to agent.SetDestination taking a few seconds to register at X poition 0, for some reason
         if(transform.position.x == 0.0f){
             transform.position = new Vector3(0.1f, transform.position.y, transform.position.z);
@@ -41,9 +42,9 @@ public class EnemyAI : MonoBehaviour
         {
             //Disables the gameObject to be able to reinstantiate it through the pool instead of deleting it
             this.gameObject.SetActive(false);
+            enemySpawn.EnemyRemove(this.gameObject);
             this.health = this.baseHealth;
             CurrencyManager.Instance.Earn(this.currencyValue);
-            Destroy(this.gameObject);
         }
     } 
 

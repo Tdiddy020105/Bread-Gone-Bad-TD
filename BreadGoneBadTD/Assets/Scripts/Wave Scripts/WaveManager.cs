@@ -96,7 +96,7 @@ public class WaveManager : MonoBehaviour
             case WaveState.Waiting:
                 //TODO enemyRemove toepassen
                 
-                Debug.Log("Stuck here");
+                //Debug.Log("Stuck here");
                 break;
         }
     }
@@ -127,6 +127,7 @@ public class WaveManager : MonoBehaviour
         if(enemySpawn.Enemies.Count == 0) 
         {
             OnEnemiesDefeated();
+            Debug.Log("Enemies defeated!");
         }
     }
 

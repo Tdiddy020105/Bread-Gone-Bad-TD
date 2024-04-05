@@ -80,5 +80,9 @@ using UnityEngine.Pool;
             }
             return null;
         }
+
+        public void EnemyRemove(GameObject enemy){
+            Enemies.Remove(enemy);
+        }
     }
 
