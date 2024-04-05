@@ -4,8 +4,8 @@ public class CurrencyManager
 
     private int currencyAmount = 0;
 
-    static CurrencyManager() {}
-    private CurrencyManager() {}
+    static CurrencyManager() { }
+    private CurrencyManager() { }
 
     public static CurrencyManager Instance
     {

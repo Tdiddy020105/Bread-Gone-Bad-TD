@@ -23,7 +23,7 @@ public class TowerUI : MonoBehaviour
         Button button = obj.GetComponentInChildren<Button>();
         TextMeshProUGUI textMeshPro = obj.GetComponentInChildren<TMPro.TextMeshProUGUI>();
         // button.onClick.AddListener(// script here to place tower on map);
-        button.GetComponent<Image>().sprite = tower.UIImage;
+        button.GetComponent<Image>().sprite = tower.sprite;
         textMeshPro.text = tower.cost.ToString();
         GameObject InstantiatedObj = Instantiate(obj);
         InstantiatedObj.transform.SetParent(transform);

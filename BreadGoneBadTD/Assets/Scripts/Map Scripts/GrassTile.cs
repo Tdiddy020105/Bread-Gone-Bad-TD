@@ -27,11 +27,15 @@ public class GrassTile : Tile
     {
         if (hasTower == false)
         {
-            Instantiate(tower, this.transform, false);
-            CurrencyManager.Instance.Spend(10/*Pass TowerData.price here depending on which Tower is placed. This also needs UI support.*/);
+            Debug.Log("Tiles has no tower true");
+            if (GetComponent<Tower>().GetData().price <= CurrencyManager.Instance.GetCurrencyAmount()) //Object reference not set to instance of an object...
+            {
+                Debug.Log("You can affordd this tower check");
+                Instantiate(tower, this.transform, false);
+                CurrencyManager.Instance.Spend(GetComponent<Tower>().GetData().price); //Object reference not set to instance of an object...
+                hasTower = true;
+            }
         }
-
-        hasTower = true;
     }
 
     private void OnMouseEnter()
