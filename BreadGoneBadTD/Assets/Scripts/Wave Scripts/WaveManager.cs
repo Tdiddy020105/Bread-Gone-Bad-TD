@@ -141,5 +141,11 @@ namespace DesignPatterns.EnemyPool
             OnEnemiesDefeated -= HandleEnemiesDefeated;
             EnemySpawn.OnEnemiesKilled -= CheckEnemyList;
         }
+
+        public int GetWaveNumber()
+        {
+            return waveNumber;
+        }
     }
+
 }
