@@ -2,7 +2,7 @@ public class CurrencyManager
 {
     private static readonly CurrencyManager instance = new CurrencyManager();
 
-    private int currencyAmount = 0;
+    private int currencyAmount = 100;
 
     static CurrencyManager() { }
     private CurrencyManager() { }
@@ -17,7 +17,7 @@ public class CurrencyManager
 
     public void Reset()
     {
-        currencyAmount = 0;
+        currencyAmount = 100;
     }
 
     public int GetCurrencyAmount()

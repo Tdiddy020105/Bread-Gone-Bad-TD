@@ -8,10 +8,11 @@ public class TowerUI : MonoBehaviour
 {
     [SerializeField] List<TowerData> towers = new List<TowerData>();
     [SerializeField] GameObject TowerUIElementPrefab;
+    [SerializeField] TowerPlacer towerPlacer;
 
     void Start()
     {
-        foreach(TowerData tower in towers)
+        foreach (TowerData tower in towers)
         {
             CreateButton(tower);
         }
@@ -19,14 +20,16 @@ public class TowerUI : MonoBehaviour
 
     void CreateButton(TowerData tower)
     {
+        TowerData tempTowerData = tower;
         GameObject obj = TowerUIElementPrefab;
         Button button = obj.GetComponentInChildren<Button>();
-        TextMeshProUGUI textMeshPro = obj.GetComponentInChildren<TMPro.TextMeshProUGUI>();
-        // button.onClick.AddListener(// script here to place tower on map);
-        button.GetComponent<Image>().sprite = tower.sprite;
-        textMeshPro.text = tower.cost.ToString();
+        TextMeshProUGUI textMeshPro = obj.GetComponentInChildren<TextMeshProUGUI>();
+        textMeshPro.text = tower.price.ToString();
         GameObject InstantiatedObj = Instantiate(obj);
         InstantiatedObj.transform.SetParent(transform);
         InstantiatedObj.transform.localScale = new Vector3(1f, 1f, 1f);
+        button.onClick.RemoveAllListeners();
+        button.onClick.AddListener(delegate { towerPlacer.SelectTower(tempTowerData); });
+        button.GetComponent<Image>().sprite = tower.sprite;
     }
 }

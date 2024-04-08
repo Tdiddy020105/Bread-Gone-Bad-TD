@@ -9,6 +9,7 @@ public class GrassTile : Tile
     [SerializeField] private Color baseColor;
     [SerializeField] private Color offSetColor;
     [SerializeField] private GameObject tower;
+    [SerializeField] private TowerPlacer towerPlacer;
 
     private bool hasTower = false;
 
@@ -20,21 +21,10 @@ public class GrassTile : Tile
 
     private void OnMouseDown()
     {
-        PlaceTower();
-    }
-
-    private void PlaceTower()
-    {
-        if (hasTower == false)
+        if (!hasTower)
         {
-            Debug.Log("Tiles has no tower true");
-            if (GetComponent<Tower>().GetData().price <= CurrencyManager.Instance.GetCurrencyAmount()) //Object reference not set to instance of an object...
-            {
-                Debug.Log("You can affordd this tower check");
-                Instantiate(tower, this.transform, false);
-                CurrencyManager.Instance.Spend(GetComponent<Tower>().GetData().price); //Object reference not set to instance of an object...
-                hasTower = true;
-            }
+            towerPlacer.PlaceTower(this.transform);
+            hasTower = true;
         }
     }
 

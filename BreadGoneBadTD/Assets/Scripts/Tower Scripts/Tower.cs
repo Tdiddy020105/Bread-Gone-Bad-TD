@@ -78,6 +78,11 @@ public class Tower : MonoBehaviour
     return this.towerData;
     }
 
+    public void SetData(TowerData towerData)
+    { 
+    this.towerData = towerData;
+    }
+
     #region Enemy detection
     private void OnTriggerEnter2D(Collider2D collider)
     {

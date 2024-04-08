@@ -18,7 +18,7 @@ public class TowerData : ScriptableObject
     [SerializeField] public int price;
 
     [SerializeField] public int secondsBetweenAttacks;
-    [SerializeField] public int cost;
 
     [SerializeField] public Sprite sprite;
+    [SerializeField] public string description = "";
 }
