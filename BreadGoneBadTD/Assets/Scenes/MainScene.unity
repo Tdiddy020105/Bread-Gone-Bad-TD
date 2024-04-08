@@ -2186,6 +2186,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &484437526 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7379256321918217176, guid: 190424ad3569598479dd76b3eb40adf8, type: 3}
+  m_PrefabInstance: {fileID: 1292390457}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &489211993
 GameObject:
   m_ObjectHideFlags: 0
@@ -3245,10 +3250,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2d8b1989cfa39a49a259fd5874627df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 7379256321918217176, guid: 190424ad3569598479dd76b3eb40adf8, type: 3}
+  enemyPrefab: {fileID: 484437526}
   bossPrefab: {fileID: 7379256321918217176, guid: 246baec73a685264ea9501322b1b8323, type: 3}
   pooledObjects: []
-  objectToPool: {fileID: 7379256321918217176, guid: 190424ad3569598479dd76b3eb40adf8, type: 3}
+  objectToPool: {fileID: 484437526}
   amountToPool: 10
   Enemies: []
 --- !u!4 &1458997364
