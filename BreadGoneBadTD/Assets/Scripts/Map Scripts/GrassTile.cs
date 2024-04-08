@@ -7,16 +7,18 @@ public class GrassTile : Tile
 {
     [SerializeField] private GameObject highlight;
     [SerializeField] private Color baseColor;
-    [SerializeField] private Color offSetColor;
+    //[SerializeField] private Color offSetColor;
     [SerializeField] private GameObject tower;
 
     private bool hasTower = false;
 
+    /*
     public override void Init(int x, int y)
     {
         var isOffset = (x + y) % 2 == 1;
         spriteRenderer.color = isOffset ? offSetColor : baseColor;
     }
+    */
 
     private void OnMouseDown()
     {
