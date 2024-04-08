@@ -30,14 +30,6 @@ public class PlayerAttack : MonoBehaviour
         CheckAttack();
         UpdateAttackTimer();
     }
-/*
-    void Initialize()
-    {
-        inputSystem = GetComponent<InputSystem>();
-        InstantiateAttackArea(currentWeapon.attackAreaPrefab);
-        timeToAttack = 1f / currentWeapon.attackRate;
-    }
-*/
 
     void Initialize()
     {
@@ -84,30 +76,34 @@ public class PlayerAttack : MonoBehaviour
         attacking = true;
         currentAttackArea.SetActive(true);
         RotateAttackArea();
+
+        if (currentWeapon.appearanceAnimation != null)
+        {
+            // Assuming the animation is on the same GameObject as the attack area
+            Animation animation = currentAttackArea.GetComponent<Animation>();
+            if (animation != null)
+            {
+                animation.Play(currentWeapon.appearanceAnimation.name);
+            }
+            else
+            {
+                Debug.LogWarning("No Animation component found on the attack area GameObject.");
+            }
+        }
     }
-/*
+
     void RotateAttackArea()
     {
         float angle = Mathf.Atan2(lastDirection.y, lastDirection.x) * Mathf.Rad2Deg;
         currentAttackArea.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        currentAttackArea.transform.position = attackDirectionIndicator.position;
+
+        // Convert the player's position to Vector2 and calculate the attack offset
+        Vector2 playerPosition = playerTransform.position;
+        Vector2 attackOffset = playerPosition + (lastDirection.normalized * currentWeapon.range);
+        
+        // Set the position of the attack area
+        currentAttackArea.transform.position = attackOffset;
     }
-*/
-
-void RotateAttackArea()
-{
-    float angle = Mathf.Atan2(lastDirection.y, lastDirection.x) * Mathf.Rad2Deg;
-    currentAttackArea.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-
-    // Convert the player's position to Vector2 and calculate the attack offset
-    Vector2 playerPosition = playerTransform.position;
-    Vector2 attackOffset = playerPosition + (lastDirection.normalized * currentWeapon.range);
-    
-    // Set the position of the attack area
-    currentAttackArea.transform.position = attackOffset;
-}
-
-
 
 
     void InstantiateAttackArea(GameObject attackAreaPrefab)

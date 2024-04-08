@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8505722872268934071}
   - component: {fileID: 6497478948041623213}
+  - component: {fileID: 2971324054842760093}
   m_Layer: 0
   m_Name: AttackArea
   m_TagString: Untagged
@@ -80,3 +81,18 @@ PolygonCollider2D:
       - {x: 0.5, y: -0.026368111}
       - {x: 1, y: -0.3461857}
   m_UseDelaunayMesh: 0
+--- !u!111 &2971324054842760093
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7774568012247857799}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 262007bbe976bc54188931a4dedce412, type: 2}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0

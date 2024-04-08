@@ -17,3 +17,5 @@ MonoBehaviour:
   attackRate: 1
   range: 0
   attackAreaPrefab: {fileID: 4576693704932570619, guid: bd22edbfae736164aa00c30c41daa7f1, type: 3}
+  weaponImage: {fileID: 21300000, guid: de4182e019b0e3345a2a5b669d14840e, type: 3}
+  appearanceAnimation: {fileID: 7400000, guid: 262007bbe976bc54188931a4dedce412, type: 2}
