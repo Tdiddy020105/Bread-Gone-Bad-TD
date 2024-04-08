@@ -15,6 +15,7 @@ public class PlayerAttack : MonoBehaviour
 
     private InputSystem inputSystem;
     private Transform playerTransform; // Reference to the player's transform
+    private Animator playerAnimator;   // Reference to the player's animator
 
     public InputActionReference attackAction;
 
@@ -37,6 +38,7 @@ public class PlayerAttack : MonoBehaviour
         playerTransform = transform; // Set playerTransform to the player's transform
         InstantiateAttackArea(currentWeapon.attackAreaPrefab);
         timeToAttack = 1f / currentWeapon.attackRate;
+        playerAnimator = GetComponent<Animator>();
     }
 
     void UpdateAttackDirection()
@@ -74,22 +76,9 @@ public class PlayerAttack : MonoBehaviour
     void Attack()
     {
         attacking = true;
+        playerAnimator.SetTrigger("TriggerAttack");
         currentAttackArea.SetActive(true);
         RotateAttackArea();
-
-        if (currentWeapon.appearanceAnimation != null)
-        {
-            // Assuming the animation is on the same GameObject as the attack area
-            Animation animation = currentAttackArea.GetComponent<Animation>();
-            if (animation != null)
-            {
-                animation.Play(currentWeapon.appearanceAnimation.name);
-            }
-            else
-            {
-                Debug.LogWarning("No Animation component found on the attack area GameObject.");
-            }
-        }
     }
 
     void RotateAttackArea()
