@@ -242,15 +242,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 193395083793335035, guid: 5bd027b97cd43544b9243e633794b504, type: 3}
       propertyPath: offset.y
-      value: 0.7
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2142876074384841369, guid: 5bd027b97cd43544b9243e633794b504, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2142876074384841369, guid: 5bd027b97cd43544b9243e633794b504, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5660426897446446684, guid: 5bd027b97cd43544b9243e633794b504, type: 3}
       propertyPath: m_Pivot.x
