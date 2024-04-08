@@ -63,26 +63,6 @@ public class Tower : MonoBehaviour
         }
     }
 
-    private void OnMouseDown()
-    {
-        DestroyTower();
-    }
-
-    private void DestroyTower()
-    {
-        Destroy(this);
-    }
-
-    public TowerData GetData()
-    {
-    return this.towerData;
-    }
-
-    public void SetData(TowerData towerData)
-    { 
-    this.towerData = towerData;
-    }
-
     #region Enemy detection
     private void OnTriggerEnter2D(Collider2D collider)
     {
