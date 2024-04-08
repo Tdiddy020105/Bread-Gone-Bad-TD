@@ -9,6 +9,7 @@ public class GrassTile : Tile
     [SerializeField] private Color baseColor;
     //[SerializeField] private Color offSetColor;
     [SerializeField] private GameObject tower;
+    [SerializeField] private TowerPlacer towerPlacer;
 
     private bool hasTower = false;
 
@@ -22,18 +23,11 @@ public class GrassTile : Tile
 
     private void OnMouseDown()
     {
-        PlaceTower();
-    }
-
-    private void PlaceTower()
-    {
-        if (hasTower == false)
+        if (!hasTower)
         {
-            Instantiate(tower, this.transform, false);
-            CurrencyManager.Instance.Spend(10/*Pass TowerData.price here depending on which Tower is placed. This also needs UI support.*/);
+            towerPlacer.PlaceTower(this.transform);
+            hasTower = true;
         }
-
-        hasTower = true;
     }
 
     private void OnMouseEnter()
