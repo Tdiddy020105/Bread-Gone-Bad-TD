@@ -26,7 +26,9 @@ public abstract class UpgradeManagerBase<T, U> : MonoBehaviour where T : Scripta
     public static List<U> GetBoughtUpgrades()
     {
         // TODO: Deserialize bought upgrades and return them in this list...
-
+        SaveStateSerializer saveStateSerializer = new SaveStateSerializer();
+        // Possible fetch from List<U> necessary before this properly works
+        Upgrade<T> data = saveStateSerializer.FileToJSON<Upgrade<T>>("upgrade");
         return new List<U>();
     }
 
@@ -36,7 +38,11 @@ public abstract class UpgradeManagerBase<T, U> : MonoBehaviour where T : Scripta
 
     private void SerializeUpgrades(List<U> upgrades)
     {
+        SaveStateSerializer saveStateSerializer = new SaveStateSerializer();
         // TODO: Serialize upgrades here...
         // Note: Use the this.SerializationKey() to access a unique key for the save file.
+        string upgradeKey = this.SerializationKey();
+        // Error because list needs to be split apart first
+        bool serialized = saveStateSerializer.JSONToFile<Upgrade<T>>(upgradeKey, upgrades);
     }
 }

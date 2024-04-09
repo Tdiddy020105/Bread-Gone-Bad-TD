@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class SaveStateSerializer
 {
-    /// <summary>
+    /// <summary>  
     /// Serializes any object to a JSON file.
     /// </summary>
     /// <typeparam name="T">The type of the object that you're serializing.</typeparam>
