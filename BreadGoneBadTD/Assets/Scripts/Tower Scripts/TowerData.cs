@@ -12,12 +12,13 @@ public enum TowerAttackType
 [CreateAssetMenu(fileName = "TowerData", menuName = "ScriptableObjects/TowerData")]
 public class TowerData : ScriptableObject
 {
+    [SerializeField] public int attackDamage;
     [SerializeField] public Vector2 attackRange;
     [SerializeField] public TowerAttackType attackType;
-    [SerializeField] public int attackDamage;
     [SerializeField] public int price;
-    
+
     [SerializeField] public int secondsBetweenAttacks;
-    [SerializeField] public Sprite UIImage;
-    [SerializeField] public int cost;
+
+    [SerializeField] public Sprite sprite;
+    [SerializeField] public string description = "";
 }
