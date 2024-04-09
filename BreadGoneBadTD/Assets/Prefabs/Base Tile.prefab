@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9080760972892795008}
   - component: {fileID: 1081495565856912258}
   - component: {fileID: 2221675712234374994}
+  - component: {fileID: 350122020485861557}
   m_Layer: 0
   m_Name: Base Tile
   m_TagString: Tile
@@ -75,8 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 78cf4b3bfdb400f4885e5b085f871af5, type: 3}
+  m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -122,7 +123,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.0666667, y: 1.0666667}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -131,6 +132,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &350122020485861557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2477059391168840629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c54a3b76ff4be2142ad084e1b48b306d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 1081495565856912258}
+  highlight: {fileID: 5957886792742734549}
+  baseColor: {r: 0, g: 1, b: 0, a: 1}
+  offSetColor: {r: 0, g: 0.78431374, b: 0, a: 1}
+  tower: {fileID: 4423694812007710231, guid: 11b2068decb7fec48b70fc7f187b2d7f, type: 3}
 --- !u!1 &5957886792742734549
 GameObject:
   m_ObjectHideFlags: 0

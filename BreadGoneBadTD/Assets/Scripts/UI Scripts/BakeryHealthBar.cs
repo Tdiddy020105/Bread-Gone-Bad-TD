@@ -6,14 +6,13 @@ using UnityEngine.UI;
 public class BakeryHealthBar : MonoBehaviour
 {
     [SerializeField] private GameObject bakery;
-    [SerializeField] private Image healthBar;
+    [SerializeField] private Image greenHealthBar;
     private float life;
     private float maxLife;
 
     void Start()
     {
-        life = 40f;
-        // life = bakery.GetComponent<AttackableStructure>().GetHealth();
+        life = bakery.GetComponent<AttackableStructure>().GetHealth();
         maxLife = life;
     }
 
@@ -22,14 +21,12 @@ public class BakeryHealthBar : MonoBehaviour
         if (life <= 0)
         {
             life = 0;
-            healthBar.fillAmount = life / maxLife;
+            greenHealthBar.fillAmount = life / maxLife;
         }
-        /*
         else if (life != bakery.GetComponent<AttackableStructure>().GetHealth() && life > 0)
         {
             life = bakery.GetComponent<AttackableStructure>().GetHealth();
-            healthBar.fillAmount = life / maxLife;
+            greenHealthBar.fillAmount = life / maxLife;
         }
-        */
     }
 }

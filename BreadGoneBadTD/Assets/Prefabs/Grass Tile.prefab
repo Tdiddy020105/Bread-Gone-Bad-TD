@@ -8,25 +8,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1081495565856912258, guid: 0f5f5b9214398544e8a9004319d2ec36, type: 3}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1081495565856912258, guid: 0f5f5b9214398544e8a9004319d2ec36, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1081495565856912258, guid: 0f5f5b9214398544e8a9004319d2ec36, type: 3}
-      propertyPath: m_Color.r
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2477059391168840629, guid: 0f5f5b9214398544e8a9004319d2ec36, type: 3}
       propertyPath: m_Name
       value: Grass Tile
-      objectReference: {fileID: 0}
-    - target: {fileID: 2477059391168840629, guid: 0f5f5b9214398544e8a9004319d2ec36, type: 3}
-      propertyPath: m_TagString
-      value: Tile
       objectReference: {fileID: 0}
     - target: {fileID: 9080760972892795008, guid: 0f5f5b9214398544e8a9004319d2ec36, type: 3}
       propertyPath: m_LocalPosition.x
@@ -68,44 +52,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3593224761137665931, guid: 0f5f5b9214398544e8a9004319d2ec36, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2477059391168840629, guid: 0f5f5b9214398544e8a9004319d2ec36, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8150622020208416630}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f5f5b9214398544e8a9004319d2ec36, type: 3}
---- !u!1 &2221770158174874201 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2477059391168840629, guid: 0f5f5b9214398544e8a9004319d2ec36, type: 3}
-  m_PrefabInstance: {fileID: 4374429325890005484}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &8150622020208416630
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2221770158174874201}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c54a3b76ff4be2142ad084e1b48b306d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 3726489234970122862}
-  highlight: {fileID: 7934131102096401209}
-  tower: {fileID: 4423694812007710231, guid: 11b2068decb7fec48b70fc7f187b2d7f, type: 3}
-  baseColor: {r: 0, g: 1, b: 0, a: 1}
-  offSetColor: {r: 0, g: 0.78431374, b: 0, a: 1}
---- !u!212 &3726489234970122862 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 1081495565856912258, guid: 0f5f5b9214398544e8a9004319d2ec36, type: 3}
-  m_PrefabInstance: {fileID: 4374429325890005484}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &7934131102096401209 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5957886792742734549, guid: 0f5f5b9214398544e8a9004319d2ec36, type: 3}
-  m_PrefabInstance: {fileID: 4374429325890005484}
-  m_PrefabAsset: {fileID: 0}

@@ -3,81 +3,149 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaveManager : MonoBehaviour
+namespace DesignPatterns.EnemyPool
 {
-    public event EventHandler OnWaveNumberChanged;
-    
-    
-
-    //Temporary placeholder for the EnemySpawn script as object reference
-    
-    public EnemySpawn enemySpawn;
-    
-    private enum WaveState
+    public class WaveManager : MonoBehaviour
     {
-        WaitingToSpawnNextWave,
-        SpawningWave,
-    }
+        public event EventHandler OnWaveNumberChanged;
+        public static event Action OnEnemiesDefeated;
 
-    [SerializeField] private List<Transform> spawnPositionTransformList;
-    [SerializeField] private Transform nextWaveSpawnPositionTransform;
+        //Temporary placeholder for the EnemySpawn script as object reference
+        public EnemySpawn enemySpawn;
 
-    private WaveState waveState;
-    private int waveNumber;
-    private float nextWaveSpawnTimer;
-    private float nextEnemySpawnTimer;
-    private int remainingEnemySpawnAmount;
-    private Vector3 spawnPosition;
-
-    private void Start()
-    {
-        
-        waveState = WaveState.WaitingToSpawnNextWave;
-        spawnPosition = spawnPositionTransformList[UnityEngine.Random.Range(0, spawnPositionTransformList.Count)].position;
-        nextWaveSpawnPositionTransform.position = spawnPosition;
-        nextWaveSpawnTimer = 3f;
-    }
-
-    private void Update()
-    {
-        switch (waveState)
+        private enum WaveState
         {
-            case WaveState.WaitingToSpawnNextWave:
-                nextWaveSpawnTimer -= Time.deltaTime;
-                if(nextWaveSpawnTimer < 0f)
-                {
-                    SpawnWave();
-                }
-                break;
-            case WaveState.SpawningWave:
-                if(remainingEnemySpawnAmount > 0)
-                {
-                    nextWaveSpawnTimer -= Time.deltaTime;
-                    if(nextEnemySpawnTimer < 0f)
-                    {
-                        nextEnemySpawnTimer = UnityEngine.Random.Range(0f, 2f);
-                        //Uses the EnemySpawn script which instantiates a copy of the current enemy prefab using spawnPosition as vector3
-                        enemySpawn.Spawn(spawnPosition);
-                        remainingEnemySpawnAmount--;
+            WaitingToSpawnNextWave,
+            SpawningWave,
+            BossWave,
+            Waiting,
+        }
 
-                        if(remainingEnemySpawnAmount <= 0)
+        //[SerializeField] private List<Transform> spawnPositionTransformList;
+        //[SerializeField] private Transform nextWaveSpawnPositionTransform;
+
+        private WaveState waveState;
+        private int waveNumber;
+        private float nextWaveSpawnTimer;
+        private float nextEnemySpawnTimer = 2f;
+        private int remainingEnemySpawnAmount;
+        [SerializeField] private Vector3 spawnPosition;
+
+        private void Start()
+        {
+            Debug.Log("Start");
+
+            waveState = WaveState.WaitingToSpawnNextWave;
+            Debug.Log(waveState.ToString());
+            //spawnPosition = spawnPositionTransformList[UnityEngine.Random.Range(0, spawnPositionTransformList.Count)].position;
+            //nextWaveSpawnPositionTransform.position = spawnPosition;
+
+            OnEnemiesDefeated += HandleEnemiesDefeated;
+            EnemySpawn.OnEnemiesKilled += CheckEnemyList;
+
+            nextWaveSpawnTimer = 3f;
+
+        }
+
+        private void Update()
+        {
+            switch (waveState)
+            {
+                case WaveState.WaitingToSpawnNextWave:
+                    nextWaveSpawnTimer -= Time.deltaTime;
+                    if (nextWaveSpawnTimer < 0f)
+                    {
+                        Debug.Log("Spawning wave");
+                        SpawnWave();
+                    }
+
+
+                    break;
+
+                case WaveState.SpawningWave:
+                    if (remainingEnemySpawnAmount > 0)
+                    {
+                        nextEnemySpawnTimer -= Time.deltaTime;
+                        if (nextEnemySpawnTimer < 0f)
                         {
-                            waveState = WaveState.WaitingToSpawnNextWave;
-                            spawnPosition = spawnPositionTransformList[UnityEngine.Random.Range(0, spawnPositionTransformList.Count)].position;
-                            nextWaveSpawnPositionTransform.position = spawnPosition;
-                            nextWaveSpawnTimer = 10f;
+                            nextEnemySpawnTimer = 1f;
+                            //Uses the EnemySpawn script which instantiates a copy of the current enemy prefab using spawnPosition as vector3
+                            enemySpawn.Spawn(spawnPosition);
+                            remainingEnemySpawnAmount--;
+
+                            if (remainingEnemySpawnAmount <= 0)
+                            {
+                                waveState = WaveState.Waiting;
+                                //spawnPosition = spawnPositionTransformList[UnityEngine.Random.Range(0, spawnPositionTransformList.Count)].position;
+                                //nextWaveSpawnPositionTransform.position = spawnPosition;
+                                nextWaveSpawnTimer = 5f;
+
+                            }
                         }
                     }
+                    break;
+
+                case WaveState.BossWave:
+                    Debug.Log("Spawning Boss wave");
+                    enemySpawn.SpawnBoss();
+                    waveState = WaveState.Waiting;
+                    nextWaveSpawnTimer = 10f;
+                    break;
+
+                case WaveState.Waiting:
+                    //TODO enemyRemove toepassen
+
+                    //Debug.Log("Stuck here");
+                    break;
+            }
+        }
+
+        private void SpawnWave()
+        {
+            waveNumber++;
+            bool check = (waveNumber % 5) == 0;
+            if (check)
+            {
+                waveState = WaveState.BossWave;
+            }
+            else
+            {
+                remainingEnemySpawnAmount = 3 + 2 * waveNumber;
+                waveState = WaveState.SpawningWave;
+            }
+        }
+
+        private void HandleEnemiesDefeated()
+        {
+            Debug.Log("All enemies are defeated!");
+            waveState = WaveState.WaitingToSpawnNextWave;
+        }
+
+        private void CheckEnemyList()
+        {
+            Debug.Log(remainingEnemySpawnAmount);
+            if (remainingEnemySpawnAmount <= 0)
+            {
+                
+                if (enemySpawn.Enemies.Count == 0)
+                {
+                    OnEnemiesDefeated();
+                    Debug.Log("Enemies defeated!");
                 }
-                break;
+            }
+        }
+
+        void OnDestroy()
+        {
+            // Unsubscribe from the event to avoid memory leaks
+            OnEnemiesDefeated -= HandleEnemiesDefeated;
+            EnemySpawn.OnEnemiesKilled -= CheckEnemyList;
+        }
+
+        public int GetWaveNumber()
+        {
+            return waveNumber;
         }
     }
 
-    private void SpawnWave()
-    {
-        remainingEnemySpawnAmount = 3 + 2 * waveNumber;
-        waveState = WaveState.SpawningWave;
-        waveNumber++;
-
-    }
 }
