@@ -8,7 +8,7 @@ public class TowerUI : MonoBehaviour
 {
     [SerializeField] List<TowerData> towers = new List<TowerData>();
     [SerializeField] GameObject TowerUIElementPrefab;
-    [SerializeField] GameManager towerUIContent;
+    [SerializeField] GameObject towerUIContent;
     [SerializeField] TowerPlacer towerPlacer;
 
     void Start()
