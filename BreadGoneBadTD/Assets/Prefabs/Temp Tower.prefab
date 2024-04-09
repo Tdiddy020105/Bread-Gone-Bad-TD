@@ -99,6 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerData: {fileID: 11400000, guid: 5b7e422112486af4cbc6d411429f3efc, type: 2}
+  projectilePrefab: {fileID: 5735668633137535341, guid: e0643f77b5e48db41824a0ded74772e3, type: 3}
+  projectileSpawnOffset: {x: 0, y: 0, z: 0}
 --- !u!95 &5221068131438420582
 Animator:
   serializedVersion: 5
