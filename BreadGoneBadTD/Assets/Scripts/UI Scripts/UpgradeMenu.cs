@@ -16,6 +16,8 @@ public class UpgradeMenu : MonoBehaviour
         {
             CreateButton(upgrade);
         }
+
+        CurrencyManager.Instance.Earn(100, CurrencyType.PERMANENT);
     }
 
     void CreateButton(Upgrade<PlayerData> upgrade)
@@ -27,7 +29,7 @@ public class UpgradeMenu : MonoBehaviour
         Button button = obj.GetComponentInChildren<Button>();
         button.GetComponent<Image>().sprite = upgrade.UIImage;
         button.onClick.RemoveAllListeners();
-        //button.onClick.AddListener(delegate { unlock upgrade feature; });
-        //button.onClick.Invoke();
+        button.onClick.AddListener(delegate { this.GetComponent<PermanentPlayerUpgradesManager>()?.Buy(upgrade); });
+        // button.onClick.Invoke();
     }
 }

@@ -7,8 +7,11 @@ public abstract class UpgradeManagerBase<T> : MonoBehaviour where T : Scriptable
     {
         if (CurrencyManager.Instance.GetCurrencyAmount(CurrencyType.PERMANENT) < upgrade.unlockCurrencyAmount)
         {
+            Debug.Log("UPGRADE NIET GEKOOPT!!!");
             return false;
         }
+
+        Debug.Log("UPGRADE GEKOOPT!!!");
 
         CurrencyManager.Instance.Spend(upgrade.unlockCurrencyAmount, CurrencyType.PERMANENT);
 
