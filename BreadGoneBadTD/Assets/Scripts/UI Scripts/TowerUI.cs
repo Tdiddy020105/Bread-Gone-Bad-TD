@@ -29,6 +29,5 @@ public class TowerUI : MonoBehaviour
         button.GetComponent<Image>().sprite = tower.sprite;
         button.onClick.RemoveAllListeners();
         button.onClick.AddListener(delegate { towerPlacer.SelectTower(tower); });
-        button.onClick.Invoke();
     }
 }
