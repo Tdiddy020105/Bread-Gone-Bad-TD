@@ -7,42 +7,47 @@ public class GrassTile : Tile
 {
     [SerializeField] private GameObject highlight;
     [SerializeField] private Color baseColor;
-    //[SerializeField] private Color offSetColor;
-    [SerializeField] private GameObject tower;
+    [SerializeField] private Color offSetColor;
+    [SerializeField] private TowerPlacer towerPlacer;
 
-    private bool hasTower = false;
+    private bool hasTower;
 
-    /*
+    void Start()
+    {
+        hasTower = false;
+    }
+
     public override void Init(int x, int y)
     {
         var isOffset = (x + y) % 2 == 1;
         spriteRenderer.color = isOffset ? offSetColor : baseColor;
     }
-    */
 
     private void OnMouseDown()
     {
-        PlaceTower();
-    }
-
-    private void PlaceTower()
-    {
-        if (hasTower == false)
+        if (!hasTower && towerPlacer.GetPlacementMode())
         {
-            Instantiate(tower, this.transform, false);
-            CurrencyManager.Instance.Spend(10/*Pass TowerData.price here depending on which Tower is placed. This also needs UI support.*/);
+            Debug.Log(this.name);
+            towerPlacer.PlaceTower(this.transform);
+            hasTower = true;
+            highlight.SetActive(false);
         }
-
-        hasTower = true;
+        Debug.Log(this.name);
     }
 
     private void OnMouseEnter()
     {
-        highlight.SetActive(true);
+        if (!hasTower && towerPlacer.GetPlacementMode())
+        {
+            highlight.SetActive(true);
+        }
     }
 
     private void OnMouseExit()
     {
-        highlight.SetActive(false);
+        if (!hasTower && towerPlacer.GetPlacementMode())
+        {
+            highlight.SetActive(false);
+        }
     }
 }

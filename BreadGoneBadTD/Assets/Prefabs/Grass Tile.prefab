@@ -8,6 +8,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 350122020485861557, guid: 0f5f5b9214398544e8a9004319d2ec36, type: 3}
+      propertyPath: towerPlacer
+      value: 
+      objectReference: {fileID: 7671157252995857804, guid: 153aa79f28a076f4f979d77b9957b703, type: 3}
+    - target: {fileID: 2176994904015218405, guid: 0f5f5b9214398544e8a9004319d2ec36, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2477059391168840629, guid: 0f5f5b9214398544e8a9004319d2ec36, type: 3}
       propertyPath: m_Name
       value: Grass Tile

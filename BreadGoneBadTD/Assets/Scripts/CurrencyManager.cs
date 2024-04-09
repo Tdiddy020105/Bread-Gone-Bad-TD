@@ -11,10 +11,11 @@ public class CurrencyManager
 {
     private static readonly CurrencyManager instance = new CurrencyManager();
 
+    private int currencyAmount = 100;
     private Dictionary<CurrencyType, int> currency = new();
 
-    static CurrencyManager() {}
-    private CurrencyManager() {}
+    static CurrencyManager() { }
+    private CurrencyManager() { }
 
     public static CurrencyManager Instance
     {
@@ -26,6 +27,7 @@ public class CurrencyManager
 
     public void Reset()
     {
+        currencyAmount = 100;
         // Reset all currency that exists within the dictionary
         foreach (KeyValuePair<CurrencyType, int> entry in this.currency)
         {
