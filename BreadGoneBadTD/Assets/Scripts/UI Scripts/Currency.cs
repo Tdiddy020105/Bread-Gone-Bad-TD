@@ -8,12 +8,12 @@ using UnityEngine.UI;
 public class Currency : MonoBehaviour
 {
     //[SerializeField] private int amount;
-    private TextMeshProUGUI textMeshPro;
+    [SerializeField] TextMeshProUGUI textMeshPro;
     private Color color;
 
     void Start()
     {
-        textMeshPro = GetComponentInChildren<TMPro.TextMeshProUGUI>();
+        textMeshPro = GetComponentInChildren<TextMeshProUGUI>();
         //textMeshPro.text = amount.ToString();
         textMeshPro.text = CurrencyManager.Instance.GetCurrencyAmount().ToString();
     }
