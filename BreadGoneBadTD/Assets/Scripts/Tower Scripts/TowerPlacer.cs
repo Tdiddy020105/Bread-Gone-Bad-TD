@@ -11,8 +11,13 @@ public class TowerPlacer : MonoBehaviour
 
     private Color color;
 
-    private bool placementMode = false;
+    private bool placementMode;
     private TowerData towerData;
+
+    void Start()
+    {
+        placementMode = false;
+    }
 
     public void SelectTower(TowerData towerData)
     {
@@ -36,6 +41,11 @@ public class TowerPlacer : MonoBehaviour
             Instantiate(towerPrefab, obj.transform, false);
             CurrencyManager.Instance.Spend(this.towerData.price);
         }
+    }
+
+    public bool GetPlacementMode()
+    {
+        return this.placementMode;
     }
 
     private IEnumerator FlashRed()

@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3e2996f9ee0e13b29445bc3bda48aef, type: 3}
   m_Name: BasicTower
   m_EditorClassIdentifier: 
+  attackDamage: 5
   attackRange: {x: 8, y: 8}
   attackType: 0
-  attackDamage: 5
-  price: 0
+  price: 10
   secondsBetweenAttacks: 2
-  UIImage: {fileID: 2100262844, guid: 08a99b687e6520e468dd0f0c335e0264, type: 3}
-  cost: 100
+  sprite: {fileID: 2100262844, guid: 08a99b687e6520e468dd0f0c335e0264, type: 3}
+  description: This is a tower

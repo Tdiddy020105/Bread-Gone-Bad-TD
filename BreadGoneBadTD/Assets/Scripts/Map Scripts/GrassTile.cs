@@ -8,10 +8,14 @@ public class GrassTile : Tile
     [SerializeField] private GameObject highlight;
     [SerializeField] private Color baseColor;
     [SerializeField] private Color offSetColor;
-    [SerializeField] private GameObject tower;
     [SerializeField] private TowerPlacer towerPlacer;
 
-    private bool hasTower = false;
+    private bool hasTower;
+
+    void Start()
+    {
+        hasTower = false;
+    }
 
     public override void Init(int x, int y)
     {
@@ -21,20 +25,29 @@ public class GrassTile : Tile
 
     private void OnMouseDown()
     {
-        if (!hasTower)
+        if (!hasTower && towerPlacer.GetPlacementMode())
         {
+            Debug.Log(this.name);
             towerPlacer.PlaceTower(this.transform);
             hasTower = true;
+            highlight.SetActive(false);
         }
+        Debug.Log(this.name);
     }
 
     private void OnMouseEnter()
     {
-        highlight.SetActive(true);
+        if (!hasTower && towerPlacer.GetPlacementMode())
+        {
+            highlight.SetActive(true);
+        }
     }
 
     private void OnMouseExit()
     {
-        highlight.SetActive(false);
+        if (!hasTower && towerPlacer.GetPlacementMode())
+        {
+            highlight.SetActive(false);
+        }
     }
 }
