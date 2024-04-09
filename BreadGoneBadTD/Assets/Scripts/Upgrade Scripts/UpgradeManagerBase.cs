@@ -1,38 +1,40 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class UpgradeManagerBase<T> : MonoBehaviour where T : ScriptableObject
+/// <typeparam name="T">The ScriptableObject that holds the settings</typeparam>
+/// <typeparam name="U">The save state equivalent of T</typeparam>
+public abstract class UpgradeManagerBase<T, U> : MonoBehaviour where T : ScriptableObject
 {
     public bool Buy(Upgrade<T> upgrade)
     {
         if (CurrencyManager.Instance.GetCurrencyAmount(CurrencyType.PERMANENT) < upgrade.unlockCurrencyAmount)
         {
-            Debug.Log("UPGRADE NIET GEKOOPT!!!");
             return false;
         }
 
-        Debug.Log("UPGRADE GEKOOPT!!!");
-
         CurrencyManager.Instance.Spend(upgrade.unlockCurrencyAmount, CurrencyType.PERMANENT);
 
-        List<Upgrade<T>> boughtUpgrades = GetBoughtUpgrades();
-        boughtUpgrades.Add(upgrade);
+        List<U> boughtUpgrades = GetBoughtUpgrades();
+        U saveState = this.upgradeSettingsToSaveState(upgrade.settings);
 
+        boughtUpgrades.Add(saveState);
         this.SerializeUpgrades(boughtUpgrades);
 
         return true;
     }
 
-    public static List<Upgrade<T>> GetBoughtUpgrades()
+    public static List<U> GetBoughtUpgrades()
     {
         // TODO: Deserialize bought upgrades and return them in this list...
 
-        return new List<Upgrade<T>>();
+        return new List<U>();
     }
 
     protected abstract string SerializationKey();
 
-    private void SerializeUpgrades(List<Upgrade<T>> upgrades)
+    protected abstract U upgradeSettingsToSaveState(T settings);
+
+    private void SerializeUpgrades(List<U> upgrades)
     {
         // TODO: Serialize upgrades here...
         // Note: Use the this.SerializationKey() to access a unique key for the save file.

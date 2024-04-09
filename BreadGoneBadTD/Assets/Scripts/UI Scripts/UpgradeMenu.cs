@@ -30,6 +30,5 @@ public class UpgradeMenu : MonoBehaviour
         button.GetComponent<Image>().sprite = upgrade.UIImage;
         button.onClick.RemoveAllListeners();
         button.onClick.AddListener(delegate { this.GetComponent<PermanentPlayerUpgradesManager>()?.Buy(upgrade); });
-        // button.onClick.Invoke();
     }
 }
