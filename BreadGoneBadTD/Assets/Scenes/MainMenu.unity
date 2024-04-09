@@ -1022,6 +1022,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 479843475}
+  - component: {fileID: 479843477}
   - component: {fileID: 479843476}
   m_Layer: 5
   m_Name: UpgradeMenu
@@ -1073,6 +1074,18 @@ MonoBehaviour:
     UIImage: {fileID: 21300000, guid: f9ce7d84cb61f5a468c5207ba9d6dc98, type: 3}
   PermanentUpgradeUIElement: {fileID: 596462409306557790, guid: e92d4bfd04294ce46924cb16dea3c640, type: 3}
   PermanentUpgradeUIContent: {fileID: 1611454865}
+--- !u!114 &479843477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 479843474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89308a4c71d39e0cc8cb2f178dbfbcba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &603156299
 GameObject:
   m_ObjectHideFlags: 0
