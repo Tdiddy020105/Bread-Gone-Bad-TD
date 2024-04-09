@@ -63,28 +63,46 @@ public class Test : MonoBehaviour
         #endregion
 
         #region Upgrade test
-        this.towerUpgrades = this.tower.GetComponent<TowerUpgrades>();
+        // this.towerUpgrades = this.tower.GetComponent<TowerUpgrades>();
 
-        this.OutputTowerUpgrades();
-        Debug.Log($"Can unlock {this.towerUpgrades.UnlockableTierAmount(this.playerCurrency)} tiers");
+        // this.OutputTowerUpgrades();
+        // Debug.Log($"Can unlock {this.towerUpgrades.UnlockableTierAmount(this.playerCurrency)} tiers");
 
-        this.towerUpgrades.UnlockFirstAvailableTier(this.playerCurrency);
-        this.OutputTowerUpgrades();
+        // this.towerUpgrades.UnlockFirstAvailableTier(this.playerCurrency);
+        // this.OutputTowerUpgrades();
 
-        Debug.Log(this.towerUpgrades.AllTiersUnlocked() ? "All tiers are unlocked" : "Not all tiers are unlocked");
-        Debug.Log($"Can unlock {this.towerUpgrades.UnlockableTierAmount(this.playerCurrency)} tiers");
+        // Debug.Log(this.towerUpgrades.AllTiersUnlocked() ? "All tiers are unlocked" : "Not all tiers are unlocked");
+        // Debug.Log($"Can unlock {this.towerUpgrades.UnlockableTierAmount(this.playerCurrency)} tiers");
 
-        this.towerUpgrades.UnlockFirstAvailableTier(this.playerCurrency);
-        this.OutputTowerUpgrades();
+        // this.towerUpgrades.UnlockFirstAvailableTier(this.playerCurrency);
+        // this.OutputTowerUpgrades();
 
-        Debug.Log(this.towerUpgrades.AllTiersUnlocked() ? "All tiers are unlocked" : "Not all tiers are unlocked");
-        Debug.Log($"Can unlock {this.towerUpgrades.UnlockableTierAmount(this.playerCurrency)} tiers");
+        // Debug.Log(this.towerUpgrades.AllTiersUnlocked() ? "All tiers are unlocked" : "Not all tiers are unlocked");
+        // Debug.Log($"Can unlock {this.towerUpgrades.UnlockableTierAmount(this.playerCurrency)} tiers");
 
-        this.towerUpgrades.UnlockFirstAvailableTier(this.playerCurrency);
-        this.OutputTowerUpgrades();
+        // this.towerUpgrades.UnlockFirstAvailableTier(this.playerCurrency);
+        // this.OutputTowerUpgrades();
 
-        Debug.Log(this.towerUpgrades.AllTiersUnlocked() ? "All tiers are unlocked" : "Not all tiers are unlocked");
-        Debug.Log($"Can unlock {this.towerUpgrades.UnlockableTierAmount(this.playerCurrency)} tiers");
+        // Debug.Log(this.towerUpgrades.AllTiersUnlocked() ? "All tiers are unlocked" : "Not all tiers are unlocked");
+        // Debug.Log($"Can unlock {this.towerUpgrades.UnlockableTierAmount(this.playerCurrency)} tiers");
+        #endregion
+
+        #region Currency test
+        Debug.Log("In game currency");
+        Debug.Log(CurrencyManager.Instance.GetCurrencyAmount(CurrencyType.IN_GAME));
+        CurrencyManager.Instance.Spend(10, CurrencyType.IN_GAME);
+        Debug.Log(CurrencyManager.Instance.GetCurrencyAmount(CurrencyType.IN_GAME));
+        CurrencyManager.Instance.Earn(10, CurrencyType.IN_GAME);
+        CurrencyManager.Instance.Earn(10, CurrencyType.IN_GAME);
+        Debug.Log(CurrencyManager.Instance.GetCurrencyAmount(CurrencyType.IN_GAME));
+
+        Debug.Log("Permanent currency");
+        Debug.Log(CurrencyManager.Instance.GetCurrencyAmount(CurrencyType.PERMANENT));
+        CurrencyManager.Instance.Spend(10, CurrencyType.PERMANENT);
+        Debug.Log(CurrencyManager.Instance.GetCurrencyAmount(CurrencyType.PERMANENT));
+        CurrencyManager.Instance.Earn(10, CurrencyType.PERMANENT);
+        CurrencyManager.Instance.Earn(10, CurrencyType.PERMANENT);
+        Debug.Log(CurrencyManager.Instance.GetCurrencyAmount(CurrencyType.PERMANENT));
         #endregion
     }
 
