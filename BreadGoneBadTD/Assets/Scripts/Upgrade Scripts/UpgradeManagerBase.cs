@@ -1,13 +1,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class UpgradeManagerBase<T> where T : ScriptableObject
+public abstract class UpgradeManagerBase<T> : MonoBehaviour where T : ScriptableObject
 {
     public bool Buy(Upgrade<T> upgrade)
     {
-        // TODO: Implement...
+        if (CurrencyManager.Instance.GetCurrencyAmount(CurrencyType.PERMANENT) < upgrade.unlockCurrencyAmount)
+        {
+            return false;
+        }
 
-        return false;
+        CurrencyManager.Instance.Spend(upgrade.unlockCurrencyAmount, CurrencyType.PERMANENT);
+
+        List<Upgrade<T>> boughtUpgrades = GetBoughtUpgrades();
+        boughtUpgrades.Add(upgrade);
+
+        this.SerializeUpgrades(boughtUpgrades);
+
+        return true;
     }
 
     public static List<Upgrade<T>> GetBoughtUpgrades()
