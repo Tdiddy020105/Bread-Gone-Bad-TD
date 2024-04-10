@@ -21,8 +21,8 @@ namespace DesignPatterns.EnemyPool
             Waiting,
         }
 
-        //[SerializeField] private List<Transform> spawnPositionTransformList;
-        //[SerializeField] private Transform nextWaveSpawnPositionTransform;
+        [SerializeField] private List<Transform> spawnPositionTransformList;
+        [SerializeField] private Transform nextWaveSpawnPositionTransform;
 
         private WaveState waveState;
         private int waveNumber;
@@ -37,8 +37,8 @@ namespace DesignPatterns.EnemyPool
 
             waveState = WaveState.WaitingToSpawnNextWave;
             Debug.Log(waveState.ToString());
-            //spawnPosition = spawnPositionTransformList[UnityEngine.Random.Range(0, spawnPositionTransformList.Count)].position;
-            //nextWaveSpawnPositionTransform.position = spawnPosition;
+            spawnPosition = spawnPositionTransformList[UnityEngine.Random.Range(0, spawnPositionTransformList.Count)].position;
+            nextWaveSpawnPositionTransform.position = spawnPosition;
 
             OnEnemiesDefeated += HandleEnemiesDefeated;
             EnemySpawn.OnEnemiesKilled += CheckEnemyList;
@@ -76,8 +76,8 @@ namespace DesignPatterns.EnemyPool
                             if (remainingEnemySpawnAmount <= 0)
                             {
                                 waveState = WaveState.Waiting;
-                                //spawnPosition = spawnPositionTransformList[UnityEngine.Random.Range(0, spawnPositionTransformList.Count)].position;
-                                //nextWaveSpawnPositionTransform.position = spawnPosition;
+                                spawnPosition = spawnPositionTransformList[UnityEngine.Random.Range(0, spawnPositionTransformList.Count)].position;
+                                nextWaveSpawnPositionTransform.position = spawnPosition;
                                 nextWaveSpawnTimer = 5f;
 
                             }
@@ -104,15 +104,13 @@ namespace DesignPatterns.EnemyPool
         {
             waveNumber++;
             bool check = (waveNumber % 5) == 0;
-            if (check)
-            {
-                waveState = WaveState.BossWave;
-            }
-            else
-            {
+            //if (check)
+            //{
+                //waveState = WaveState.BossWave;
+            //}
                 remainingEnemySpawnAmount = 3 + 2 * waveNumber;
                 waveState = WaveState.SpawningWave;
-            }
+            
         }
 
         private void HandleEnemiesDefeated()
