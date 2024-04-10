@@ -17,10 +17,12 @@ public class PlayerAttack : MonoBehaviour
     private Transform playerTransform; // Reference to the player's transform
 
     public InputActionReference attackAction;
+    private Animator animator;
 
     void Start()
     {
         Initialize();
+        animator = GetComponent<Animator>(); // Get the Animator component
     }
 
     void Update()
@@ -67,6 +69,7 @@ public class PlayerAttack : MonoBehaviour
                 timer = 0;
                 attacking = false;
                 currentAttackArea.SetActive(false);
+                animator.SetBool("isAttacking", false);
             }
         }
     }
@@ -74,10 +77,16 @@ public class PlayerAttack : MonoBehaviour
     void Attack()
     {
         attacking = true;
+        animator.SetBool("isAttacking", true);
         currentAttackArea.SetActive(true);
         RotateAttackArea();
     }
-/*
+
+    void OnAttackAnimationComplete()
+    {
+        animator.SetBool("isAttacking", false); // Reset the isAttacking parameter to false when the attack animation is complete
+    }
+
     void RotateAttackArea()
     {
         float angle = Mathf.Atan2(lastDirection.y, lastDirection.x) * Mathf.Rad2Deg;
@@ -90,21 +99,6 @@ public class PlayerAttack : MonoBehaviour
         // Set the position of the attack area
         currentAttackArea.transform.position = attackOffset;
     }
-*/
-
-    void RotateAttackArea()
-    {
-        float angle = Mathf.Atan2(lastDirection.y, lastDirection.x) * Mathf.Rad2Deg;
-        currentAttackArea.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-
-        // Calculate the position offset based on the direction and range of the attack
-        Vector3 attackOffset = playerTransform.position + (Vector3)lastDirection * currentWeapon.range;
-
-        // Apply the offset to the attack area position
-        currentAttackArea.transform.position = attackOffset;
-    }
-
-
 
     void InstantiateAttackArea(GameObject attackAreaPrefab)
     {
