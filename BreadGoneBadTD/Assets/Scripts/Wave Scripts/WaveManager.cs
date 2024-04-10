@@ -7,7 +7,6 @@ namespace DesignPatterns.EnemyPool
 {
     public class WaveManager : MonoBehaviour
     {
-        public event EventHandler OnWaveNumberChanged;
         public static event Action OnEnemiesDefeated;
 
         //Temporary placeholder for the EnemySpawn script as object reference
@@ -38,7 +37,6 @@ namespace DesignPatterns.EnemyPool
             waveState = WaveState.WaitingToSpawnNextWave;
             Debug.Log(waveState.ToString());
             spawnPosition = spawnPositionTransformList[UnityEngine.Random.Range(0, spawnPositionTransformList.Count)].position;
-            nextWaveSpawnPositionTransform.position = spawnPosition;
 
             OnEnemiesDefeated += HandleEnemiesDefeated;
             EnemySpawn.OnEnemiesKilled += CheckEnemyList;
@@ -69,7 +67,7 @@ namespace DesignPatterns.EnemyPool
                         nextEnemySpawnTimer -= Time.deltaTime;
                         if (nextEnemySpawnTimer < 0f)
                         {
-                            nextEnemySpawnTimer = 1f;
+                            nextEnemySpawnTimer = 2f;
                             //Uses the EnemySpawn script which instantiates a copy of the current enemy prefab using spawnPosition as vector3
                             enemySpawn.Spawn(spawnPosition);
                             remainingEnemySpawnAmount--;
@@ -79,7 +77,6 @@ namespace DesignPatterns.EnemyPool
                                 waveState = WaveState.Waiting;
                                 spawnPosition = spawnPositionTransformList[UnityEngine.Random.Range(0, spawnPositionTransformList.Count)].position;
                                 Debug.Log(spawnPosition);
-                                nextWaveSpawnPositionTransform.position = spawnPosition;
                                 nextWaveSpawnTimer = 5f;
 
                             }
@@ -95,9 +92,7 @@ namespace DesignPatterns.EnemyPool
                     break;
 
                 case WaveState.Waiting:
-                    //TODO enemyRemove toepassen
 
-                    //Debug.Log("Stuck here");
                     break;
             }
         }
