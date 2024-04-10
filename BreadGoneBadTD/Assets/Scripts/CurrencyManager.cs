@@ -29,9 +29,9 @@ public class CurrencyManager
     {
         currencyAmount = 100;
         // Reset all currency that exists within the dictionary
-        foreach (KeyValuePair<CurrencyType, int> entry in this.currency)
+        foreach (CurrencyType type in this.currency.Keys.ToList())
         {
-            this.currency[entry.Key] = 0;
+            this.currency[type] = 0;
         }
     }
 

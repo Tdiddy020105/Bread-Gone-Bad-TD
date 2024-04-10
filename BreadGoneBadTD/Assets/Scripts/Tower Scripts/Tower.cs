@@ -66,11 +66,13 @@ public class Tower : MonoBehaviour
     private void OnMouseDown()
     {
         DestroyTower();
+        Debug.Log(this + " tower was clicked");
     }
 
     private void DestroyTower()
     {
         Destroy(this);
+        CurrencyManager.Instance.Earn(this.towerData.price);
     }
 
     public TowerData GetData()
