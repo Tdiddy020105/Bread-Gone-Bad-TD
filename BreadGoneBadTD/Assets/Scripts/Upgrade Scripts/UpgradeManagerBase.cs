@@ -30,13 +30,12 @@ public abstract class UpgradeManagerBase<T, U> : MonoBehaviour where T : Scripta
         SaveStateSerializer saveStateSerializer = new SaveStateSerializer();
         // Possible fetch from List<U> necessary before this properly works
         List<U> data = saveStateSerializer.FileToJSON<List<U>>("upgrade");
-        if(data.Count >= 0){
+        if(data.Count > 0){
             return data;
         }
         else{
             return new List<U>();
         }
-        
     }
 
     protected abstract string SerializationKey();
