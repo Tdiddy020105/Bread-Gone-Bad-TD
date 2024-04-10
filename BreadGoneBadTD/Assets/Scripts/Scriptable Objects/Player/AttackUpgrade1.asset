@@ -12,7 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c74e82c35562ca49879e866fa2e45ef, type: 3}
   m_Name: AttackUpgrade1
   m_EditorClassIdentifier: 
-  attackDamage: 0
+  attackDamage: 1
   movementSpeed: 0
-  UIImage: {fileID: 0}
-  price: 0

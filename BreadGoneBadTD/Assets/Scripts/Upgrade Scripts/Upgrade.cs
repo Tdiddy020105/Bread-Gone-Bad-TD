@@ -6,6 +6,7 @@ public class Upgrade<T> where T : ScriptableObject
 {
     [SerializeField] public T settings;
     [SerializeField] public int unlockCurrencyAmount;
+    [SerializeField] public string name;
 
     [SerializeField] public Sprite UIImage;
 }

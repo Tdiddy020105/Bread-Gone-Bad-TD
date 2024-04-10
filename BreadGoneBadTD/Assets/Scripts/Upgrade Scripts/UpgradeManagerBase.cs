@@ -5,7 +5,7 @@ using UnityEngine;
 /// <typeparam name="U">The save state equivalent of T</typeparam>
 public abstract class UpgradeManagerBase<T, U> : MonoBehaviour where T : ScriptableObject
 {
-    public bool Buy(Upgrade<T> upgrade)
+    public bool Buy(Upgrade<T> upgrade, GameObject obj)
     {
         if (CurrencyManager.Instance.GetCurrencyAmount(CurrencyType.PERMANENT) < upgrade.unlockCurrencyAmount)
         {
@@ -19,6 +19,7 @@ public abstract class UpgradeManagerBase<T, U> : MonoBehaviour where T : Scripta
 
         boughtUpgrades.Add(saveState);
         this.SerializeUpgrades(boughtUpgrades);
+        obj.SetActive(false);
 
         return true;
     }

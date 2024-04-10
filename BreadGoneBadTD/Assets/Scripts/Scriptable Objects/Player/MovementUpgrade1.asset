@@ -13,6 +13,4 @@ MonoBehaviour:
   m_Name: MovementUpgrade1
   m_EditorClassIdentifier: 
   attackDamage: 0
-  movementSpeed: 0
-  UIImage: {fileID: 0}
-  price: 0
+  movementSpeed: 1

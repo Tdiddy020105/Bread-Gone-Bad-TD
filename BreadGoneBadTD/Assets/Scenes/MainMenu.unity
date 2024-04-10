@@ -977,7 +977,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &477047876
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1030,7 +1030,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &479843475
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1068,12 +1068,15 @@ MonoBehaviour:
   upgrades:
   - settings: {fileID: 11400000, guid: ac8985e8b44c52947b0148ef080bd582, type: 2}
     unlockCurrencyAmount: 10
+    name: attack
     UIImage: {fileID: 21300000, guid: 04a24cbbffdc032409d10edef96b4a19, type: 3}
   - settings: {fileID: 11400000, guid: d06d15b6690d49e499a05eab732b7d8b, type: 2}
     unlockCurrencyAmount: 10
+    name: movement
     UIImage: {fileID: 21300000, guid: f9ce7d84cb61f5a468c5207ba9d6dc98, type: 3}
   PermanentUpgradeUIElement: {fileID: 596462409306557790, guid: e92d4bfd04294ce46924cb16dea3c640, type: 3}
   PermanentUpgradeUIContent: {fileID: 1611454865}
+  permanentCurrencyText: {fileID: 758425388}
 --- !u!114 &479843477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2284,7 +2287,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: -840}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1611454868
 MonoBehaviour:
