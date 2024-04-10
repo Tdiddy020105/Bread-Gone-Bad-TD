@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
-    [SerializeField] private TowerData towerData;
+    [SerializeField] public TowerData towerData;
+    [SerializeField] private GameObject projectilePrefab;
+    [SerializeField] public Vector3 projectileSpawnOffset;
+
 
     private List<GameObject> enemiesWithinRange = new();
     private float attackTimer = 0.0f;
@@ -39,26 +42,16 @@ public class Tower : MonoBehaviour
 
     private void AttackEnemies()
     {
-        Debug.Log("ATTACK");
-
-        if (this.towerData.attackType == TowerAttackType.TARGET_FIRST_IN_RANGE)
+        if (towerData.attackType == TowerAttackType.TARGET_FIRST_IN_RANGE)
         {
-            EnemyAI enemy = this.enemiesWithinRange[0].GetComponent<EnemyAI>();
-            enemy?.TakeDamage(this.towerData.attackDamage);
-
-            Debug.Log($"Attack {this.enemiesWithinRange[0].name}");
-
-            return;
+            GameObject targetEnemy = enemiesWithinRange[0];
+            LaunchProjectile(targetEnemy.transform.position);
         }
-
-        if (this.towerData.attackType == TowerAttackType.TARGET_ALL_IN_RANGE)
+        else if (towerData.attackType == TowerAttackType.TARGET_ALL_IN_RANGE)
         {
-            foreach (GameObject gameObject in this.enemiesWithinRange)
+            foreach (GameObject enemy in enemiesWithinRange)
             {
-                EnemyAI enemy = gameObject.GetComponent<EnemyAI>();
-                enemy?.TakeDamage(this.towerData.attackDamage);
-
-                Debug.Log($"Attack {gameObject.name}");
+                LaunchProjectile(enemy.transform.position);
             }
         }
     }
@@ -82,6 +75,29 @@ public class Tower : MonoBehaviour
     {
         this.towerData = towerData;
     }
+    private void LaunchProjectile(Vector3 targetPosition)
+    {
+        // Get the position of the projectile spawn point from TowerData
+        Vector3 projectileSpawnPoint = transform.position + towerData.projectileSpawnOffset;
+
+        // Instantiate projectile as a child of the tower
+        GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity, transform);
+
+        // Calculate direction towards the target position
+        Vector2 direction = (targetPosition - projectileSpawnPoint).normalized;
+        // Set velocity or apply force to move the projectile towards the target
+        Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            rb.velocity = direction * towerData.projectileSpeed;
+        }
+        // Optionally, you can rotate the projectile to face the target
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        projectile.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+    }
+
+
+
 
     #region Enemy detection
     private void OnTriggerEnter2D(Collider2D collider)

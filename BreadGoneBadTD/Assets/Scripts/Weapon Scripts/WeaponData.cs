@@ -10,6 +10,7 @@ public class WeaponData : ScriptableObject
     public float attackRate;
     public float range;
     public GameObject attackAreaPrefab;
+    public Sprite weaponImage;
     // Add more properties as needed
 }
 

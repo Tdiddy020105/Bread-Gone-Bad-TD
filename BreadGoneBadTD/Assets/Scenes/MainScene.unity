@@ -4032,6 +4032,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3710188333129727256, guid: 190424ad3569598479dd76b3eb40adf8, type: 3}
+      propertyPath: m_Speed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4908466055324217435, guid: 190424ad3569598479dd76b3eb40adf8, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5810817926589406661, guid: 190424ad3569598479dd76b3eb40adf8, type: 3}
       propertyPath: camera
       value: 
@@ -4775,9 +4783,17 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8359525324429548295, guid: 1fa3660252106384bbb1489979a317e1, type: 3}
+      propertyPath: attackAction
+      value: 
+      objectReference: {fileID: -920811105391948422, guid: 9ee4ec917e3bd8841a5bc7a96093fbb9, type: 3}
+    - target: {fileID: 8359525324429548295, guid: 1fa3660252106384bbb1489979a317e1, type: 3}
       propertyPath: currentWeapon
       value: 
       objectReference: {fileID: 11400000, guid: 485ae05418f3b984888515dc889838fd, type: 2}
+    - target: {fileID: 8359525324429548295, guid: 1fa3660252106384bbb1489979a317e1, type: 3}
+      propertyPath: attackAreaPrefab
+      value: 
+      objectReference: {fileID: 7774568012247857799, guid: c9bd00fd9af2de242a5dff78923d7883, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

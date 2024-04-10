@@ -21,4 +21,9 @@ public class TowerData : ScriptableObject
 
     [SerializeField] public Sprite sprite;
     [SerializeField] public string description = "";
+
+    [SerializeField] public Sprite UIImage;
+    [SerializeField] public int cost;
+    [SerializeField] public float projectileSpeed;
+    [SerializeField] public Vector3 projectileSpawnOffset;
 }
