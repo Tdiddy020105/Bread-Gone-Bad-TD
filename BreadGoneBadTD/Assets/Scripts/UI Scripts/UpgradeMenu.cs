@@ -9,6 +9,7 @@ public class UpgradeMenu : MonoBehaviour
     [SerializeField] List<Upgrade<PlayerData>> upgrades;
     [SerializeField] GameObject PermanentUpgradeUIElement;
     [SerializeField] GameObject PermanentUpgradeUIContent;
+    [SerializeField] TextMeshProUGUI permanentCurrencyText;
 
     void Start()
     {
@@ -18,9 +19,15 @@ public class UpgradeMenu : MonoBehaviour
         }
 
         CurrencyManager.Instance.Earn(100, CurrencyType.PERMANENT);
+        permanentCurrencyText.text = CurrencyManager.Instance.GetCurrencyAmount(CurrencyType.PERMANENT).ToString();
     }
 
-    void CreateButton(Upgrade<PlayerData> upgrade)
+    private void Update()
+    {
+        permanentCurrencyText.text = CurrencyManager.Instance.GetCurrencyAmount(CurrencyType.PERMANENT).ToString();
+    }
+
+    private void CreateButton(Upgrade<PlayerData> upgrade)
     {
         GameObject obj = Instantiate(PermanentUpgradeUIElement, PermanentUpgradeUIContent.transform);
         obj.transform.localScale = new Vector3(1f, 1f, 1f);
@@ -29,6 +36,7 @@ public class UpgradeMenu : MonoBehaviour
         Button button = obj.GetComponentInChildren<Button>();
         button.GetComponent<Image>().sprite = upgrade.UIImage;
         button.onClick.RemoveAllListeners();
-        button.onClick.AddListener(delegate { this.GetComponent<PermanentPlayerUpgradesManager>()?.Buy(upgrade); });
+        button.onClick.AddListener(delegate { this.GetComponent<PermanentPlayerUpgradesManager>()?.Buy(upgrade, obj); });
+        obj.name = upgrade.name;
     }
 }
