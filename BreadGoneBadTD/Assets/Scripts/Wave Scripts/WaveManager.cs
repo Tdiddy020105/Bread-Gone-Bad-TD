@@ -78,6 +78,7 @@ namespace DesignPatterns.EnemyPool
                             {
                                 waveState = WaveState.Waiting;
                                 spawnPosition = spawnPositionTransformList[UnityEngine.Random.Range(0, spawnPositionTransformList.Count)].position;
+                                Debug.Log(spawnPosition);
                                 nextWaveSpawnPositionTransform.position = spawnPosition;
                                 nextWaveSpawnTimer = 5f;
 
