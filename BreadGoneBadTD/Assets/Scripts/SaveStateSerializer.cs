@@ -10,9 +10,10 @@ public class SaveStateSerializer
     /// Serializes any object to a JSON file.
     /// </summary>
     /// <typeparam name="T">The type of the object that you're serializing.</typeparam>
+    /// <typeparam name="U">The type of the object that you're serializing.</typeparam>
     /// <param name="fileName">The relative path + name (without a file extension) of the file.</param>
     /// <param name="data">The data that you want to serialize.</param>
-    public bool JSONToFile<T>(string fileName, T data)
+    public bool JSONToFile<U>(string fileName, U data)
     {
         JsonSerializationParameters parameters = new()
         {
