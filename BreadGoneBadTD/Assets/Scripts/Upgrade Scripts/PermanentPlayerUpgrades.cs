@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PermanentPlayerUpgrades : MonoBehaviour
 {
-    public List<System.Object> GetBoughtUpgrades()
+    public List<SavePlayerData> GetBoughtUpgrades()
     {
         return PermanentPlayerUpgradesManager.GetBoughtUpgrades();
     }

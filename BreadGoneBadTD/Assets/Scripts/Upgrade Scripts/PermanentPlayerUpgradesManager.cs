@@ -14,5 +14,4 @@ public class PermanentPlayerUpgradesManager : UpgradeManagerBase<PlayerData, Sav
         savePlayerData.movementSpeed = playerData.movementSpeed;
         return savePlayerData;
     }
-
 }
