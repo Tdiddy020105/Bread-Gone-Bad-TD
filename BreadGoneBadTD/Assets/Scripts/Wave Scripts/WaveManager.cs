@@ -52,6 +52,7 @@ namespace DesignPatterns.EnemyPool
             switch (waveState)
             {
                 case WaveState.WaitingToSpawnNextWave:
+                    
                     nextWaveSpawnTimer -= Time.deltaTime;
                     if (nextWaveSpawnTimer < 0f)
                     {
@@ -116,6 +117,7 @@ namespace DesignPatterns.EnemyPool
         private void HandleEnemiesDefeated()
         {
             Debug.Log("All enemies are defeated!");
+            
             waveState = WaveState.WaitingToSpawnNextWave;
         }
 
