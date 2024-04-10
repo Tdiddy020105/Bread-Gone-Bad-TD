@@ -43,6 +43,6 @@ public abstract class UpgradeManagerBase<T, U> : MonoBehaviour where T : Scripta
         // Note: Use the this.SerializationKey() to access a unique key for the save file.
         string upgradeKey = this.SerializationKey();
         // Error because list needs to be split apart first
-        bool serialized = saveStateSerializer.JSONToFile<Upgrade<T>>(upgradeKey, upgrades);
+        // bool serialized = saveStateSerializer.JSONToFile<Upgrade<T>>(upgradeKey, upgrades);
     }
 }

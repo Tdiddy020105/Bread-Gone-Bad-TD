@@ -10,8 +10,14 @@ public class InputSystem : MonoBehaviour
     public float moveSpeed;
     public Animator animator;
     private Vector2 _moveDirection;
+    private PermanentPlayerUpgrades permanentUpgrades = null;
 
     public InputActionReference move;
+
+    private void Start()
+    {
+        this.permanentUpgrades = this.GetComponent<PermanentPlayerUpgrades>();
+    }
 
     private void Update()
     {
@@ -32,6 +38,6 @@ public class InputSystem : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.velocity = _moveDirection * moveSpeed;
+        rb.velocity = _moveDirection * (moveSpeed + (float)(this.permanentUpgrades?.GetExtraMovementSpeed() ?? 0.0f));
     }
 }

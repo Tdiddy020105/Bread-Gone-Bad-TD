@@ -15,11 +15,13 @@ public class PlayerAttack : MonoBehaviour
 
     private InputSystem inputSystem;
     private Transform playerTransform; // Reference to the player's transform
+    private PermanentPlayerUpgrades permanentUpgrades = null;
 
     public InputActionReference attackAction;
 
     void Start()
     {
+        this.permanentUpgrades = this.GetComponent<PermanentPlayerUpgrades>();
         Initialize();
     }
 
@@ -133,7 +135,7 @@ void RotateAttackArea()
     {
         if (attacking && other.CompareTag("MeleeEnemy"))
         {
-            int damage = currentWeapon.damage;
+            int damage = currentWeapon.damage + (this.permanentUpgrades?.GetExtraAttackDamage() ?? 0);
             other.GetComponent<EnemyAI>().TakeDamage(damage);
         }
     }
