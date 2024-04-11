@@ -5,22 +5,6 @@ public class PermanentPlayerUpgrades : MonoBehaviour
 {
     public List<SavePlayerData> GetBoughtUpgrades()
     {
-        // Uncomment code below to test permanent upgrades
-        // List<SavePlayerData> tempData = new()
-        // {
-        //     new SavePlayerData()
-        //     {
-        //         attackDamage = 0,
-        //         movementSpeed = 2,
-        //     },
-        //     new SavePlayerData()
-        //     {
-        //         attackDamage = 100,
-        //         movementSpeed = 0,
-        //     },
-        // };
-
-        // return tempData;
         return PermanentPlayerUpgradesManager.GetAll();
     }
 
