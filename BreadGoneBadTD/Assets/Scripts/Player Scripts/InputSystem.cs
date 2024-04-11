@@ -21,33 +21,18 @@ public class InputSystem : MonoBehaviour
 
     private void Update()
     {
-        public Rigidbody2D rb;
-        public float moveSpeed;
-        public Animator animator;
-        private Vector2 _moveDirection;
+        _moveDirection = move.action.ReadValue<Vector2>();
 
-        public InputActionReference move;
+        // Set animator parameters for animation
+        animator.SetFloat("Horizontal", _moveDirection.x);
+        animator.SetFloat("Vertical", _moveDirection.y);
+        animator.SetFloat("Speed", _moveDirection.magnitude); // Use magnitude instead of sqrMagnitude
 
-        private void Update()
+        // Set animator parameters for last move direction
+        if (_moveDirection != Vector2.zero)
         {
-            _moveDirection = move.action.ReadValue<Vector2>();
-
-            // Set animator parameters for animation
-            animator.SetFloat("Horizontal", _moveDirection.x);
-            animator.SetFloat("Vertical", _moveDirection.y);
-            animator.SetFloat("Speed", _moveDirection.magnitude); // Use magnitude instead of sqrMagnitude
-
-            // Set animator parameters for last move direction
-            if (_moveDirection != Vector2.zero)
-            {
-                animator.SetFloat("LastMoveX", _moveDirection.x);
-                animator.SetFloat("LastMoveY", _moveDirection.y);
-            }
-        }
-
-        private void FixedUpdate()
-        {
-            rb.velocity = _moveDirection * moveSpeed;
+            animator.SetFloat("LastMoveX", _moveDirection.x);
+            animator.SetFloat("LastMoveY", _moveDirection.y);
         }
     }
 
