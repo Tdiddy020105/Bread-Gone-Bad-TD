@@ -18,10 +18,14 @@ public abstract class UpgradeManagerBase<T, U> : MonoBehaviour where T : Scripta
         U saveState = this.upgradeSettingsToSaveState(upgrade.settings);
 
         boughtUpgrades.Add(saveState);
-        this.SerializeUpgrades(boughtUpgrades, this.SerializationKey());
-        obj.SetActive(false);
+        bool serialization = this.SerializeUpgrades(boughtUpgrades, this.SerializationKey());
+        if( serialization = true ){
+            obj.SetActive(false);
+            return true;
+        }
+        CurrencyManager.Instance.Earn(upgrade.UnlockCurrencyAmount, CurrencyType.PERMANENT);
+        return false;
 
-        return true;
     }
 
     protected static List<U> GetBoughtUpgrades(string serializationKey)
@@ -42,10 +46,11 @@ public abstract class UpgradeManagerBase<T, U> : MonoBehaviour where T : Scripta
 
     protected abstract U upgradeSettingsToSaveState(T settings);
 
-    private void SerializeUpgrades(List<U> upgrades, string serializationKey)
+    private bool SerializeUpgrades(List<U> upgrades, string serializationKey)
     {
         SaveStateSerializer saveStateSerializer = new SaveStateSerializer();
 
         bool serialized = saveStateSerializer.JSONToFile<List<U>>(serializationKey, upgrades);
+        return serialized;
     }
 }
