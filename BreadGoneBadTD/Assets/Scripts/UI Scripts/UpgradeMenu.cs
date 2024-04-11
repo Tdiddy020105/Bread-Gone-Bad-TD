@@ -17,26 +17,11 @@ public class UpgradeMenu : MonoBehaviour
     {
         this.DisplayUpgrades();
         this.DisplayPermanentCurrency();
-
-        CurrencyManager.Instance.Earn(100, CurrencyType.PERMANENT);
     }
 
     private void Update()
     {
         this.DisplayPermanentCurrency();
-    }
-
-    private void CreateButton(Upgrade<PlayerData> upgrade)
-    {
-        GameObject obj = Instantiate(PermanentUpgradeUIElement, PermanentUpgradeUIContent.transform);
-        obj.transform.localScale = new Vector3(1f, 1f, 1f);
-        TextMeshProUGUI textMeshPro = obj.GetComponentInChildren<TextMeshProUGUI>();
-        textMeshPro.text = upgrade.unlockCurrencyAmount.ToString();
-        Button button = obj.GetComponentInChildren<Button>();
-        button.GetComponent<Image>().sprite = upgrade.UIImage;
-        button.onClick.RemoveAllListeners();
-        button.onClick.AddListener(delegate { this.GetComponent<PermanentPlayerUpgradesManager>()?.Buy(upgrade, obj); });
-        obj.name = upgrade.name;
     }
 
     private void DisplayUpgrades()
@@ -50,8 +35,21 @@ public class UpgradeMenu : MonoBehaviour
                 continue;
             }
 
-            CreateButton(upgrade);
+            CreateUpgradeButton(upgrade);
         }
+    }
+
+    private void CreateUpgradeButton(Upgrade<PlayerData> upgrade)
+    {
+        GameObject obj = Instantiate(PermanentUpgradeUIElement, PermanentUpgradeUIContent.transform);
+        obj.transform.localScale = new Vector3(1f, 1f, 1f);
+        TextMeshProUGUI textMeshPro = obj.GetComponentInChildren<TextMeshProUGUI>();
+        textMeshPro.text = upgrade.unlockCurrencyAmount.ToString();
+        Button button = obj.GetComponentInChildren<Button>();
+        button.GetComponent<Image>().sprite = upgrade.UIImage;
+        button.onClick.RemoveAllListeners();
+        button.onClick.AddListener(delegate { this.GetComponent<PermanentPlayerUpgradesManager>()?.Buy(upgrade, obj); });
+        obj.name = upgrade.name;
     }
 
     private void DisplayPermanentCurrency()

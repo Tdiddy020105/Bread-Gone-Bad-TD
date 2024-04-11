@@ -1,5 +1,8 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using UnityEngine;
 
 public enum CurrencyType
 {
@@ -26,37 +29,67 @@ public class CurrencyManager
 
     public void Reset()
     {
-        // Reset all currency that exists within the dictionary
-        foreach (KeyValuePair<CurrencyType, int> entry in this.currency)
-        {
-            this.currency[entry.Key] = 0;
-        }
+        this.currency[CurrencyType.IN_GAME] = 0;
+        this.currency[CurrencyType.PERMANENT] = this.GetPermanentCurrency();
     }
 
     public int GetCurrencyAmount(CurrencyType currencyType = CurrencyType.IN_GAME)
     {
-        this.CreateInternalCurrencyIfNotExists(currencyType);
+        if (!this.currency.Keys.Contains(currencyType))
+        {
+            return 0;
+        }
 
         return this.currency[currencyType];
     }
 
     public void Earn(int income, CurrencyType currencyType = CurrencyType.IN_GAME)
     {
-        this.CreateInternalCurrencyIfNotExists(currencyType);
         this.currency[currencyType] += income;
+
+        this.SerializeCurrency(currencyType, this.currency[currencyType]);
     }
 
     public void Spend(int expenses, CurrencyType currencyType = CurrencyType.IN_GAME)
     {
-        this.CreateInternalCurrencyIfNotExists(currencyType);
         this.currency[currencyType] -= expenses;
+
+        this.SerializeCurrency(currencyType, this.currency[currencyType]);
     }
 
-    private void CreateInternalCurrencyIfNotExists(CurrencyType currencyType)
+    private void SerializeCurrency(CurrencyType currencyType, int amount)
     {
-        if (!this.currency.Keys.Contains(currencyType))
+        switch (currencyType)
         {
-            this.currency[currencyType] = 0;
+            case CurrencyType.PERMANENT:
+                SaveStateSerializer saveStateSerializer = new();
+                saveStateSerializer.JSONToFile<PermanentCurrencySaveState>("permanent-currency", new PermanentCurrencySaveState(amount));
+                break;
+        }
+    }
+
+    private int GetPermanentCurrency()
+    {
+        SaveStateSerializer saveStateSerializer = new();
+        PermanentCurrencySaveState permanentCurrency = saveStateSerializer.FileToJSON<PermanentCurrencySaveState>("permanent-currency");
+
+        if (permanentCurrency != null)
+        {
+            return permanentCurrency.amount;
+        }
+
+        return 0;
+    }
+
+    public class PermanentCurrencySaveState
+    {
+        public int amount;
+
+        public PermanentCurrencySaveState() {}
+
+        public PermanentCurrencySaveState(int amount)
+        {
+            this.amount = amount;
         }
     }
 }
