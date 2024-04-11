@@ -1,10 +1,16 @@
-// TODO: Change "TowerData" to "PlayerData"
+using System.Collections.Generic;
+
 public class PermanentPlayerUpgradesManager : UpgradeManagerBase<PlayerData, SavePlayerData>
 {
     // All logic is handled within the "UpgradeManagerBase" class...
     protected override string SerializationKey()
     {
         return "permanent-player-upgrades";
+    }
+
+    public static List<SavePlayerData> GetAll()
+    {
+        return GetBoughtUpgrades("permanent-player-upgrades");
     }
 
     protected override SavePlayerData upgradeSettingsToSaveState(PlayerData playerData)

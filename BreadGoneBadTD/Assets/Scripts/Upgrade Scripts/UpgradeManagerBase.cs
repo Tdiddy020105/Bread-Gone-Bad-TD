@@ -14,41 +14,38 @@ public abstract class UpgradeManagerBase<T, U> : MonoBehaviour where T : Scripta
 
         CurrencyManager.Instance.Spend(upgrade.unlockCurrencyAmount, CurrencyType.PERMANENT);
 
-        List<U> boughtUpgrades = GetBoughtUpgrades();
+        List<U> boughtUpgrades = GetBoughtUpgrades(this.SerializationKey());
         U saveState = this.upgradeSettingsToSaveState(upgrade.settings);
 
         boughtUpgrades.Add(saveState);
-        this.SerializeUpgrades(boughtUpgrades);
+        this.SerializeUpgrades(boughtUpgrades, this.SerializationKey());
         obj.SetActive(false);
 
         return true;
     }
 
-    public static List<U> GetBoughtUpgrades()
+    protected static List<U> GetBoughtUpgrades(string serializationKey)
     {
         // TODO: Deserialize bought upgrades and return them in this list...
         SaveStateSerializer saveStateSerializer = new SaveStateSerializer();
-        // Possible fetch from List<U> necessary before this properly works
-        List<U> data = saveStateSerializer.FileToJSON<List<U>>("upgrade");
-        if(data.Count > 0){
+        List<U> data = saveStateSerializer.FileToJSON<List<U>>(serializationKey);
+
+        if(data != null && data.Count > 0)
+        {
             return data;
         }
-        else{
-            return new List<U>();
-        }
+
+        return new List<U>();
     }
 
     protected abstract string SerializationKey();
 
     protected abstract U upgradeSettingsToSaveState(T settings);
 
-    private void SerializeUpgrades(List<U> upgrades)
+    private void SerializeUpgrades(List<U> upgrades, string serializationKey)
     {
         SaveStateSerializer saveStateSerializer = new SaveStateSerializer();
-        // TODO: Serialize upgrades here...
-        // Note: Use the this.SerializationKey() to access a unique key for the save file.
-        string upgradeKey = this.SerializationKey();
-        // Error because list needs to be split apart first
-        bool serialized = saveStateSerializer.JSONToFile<List<U>>(upgradeKey, upgrades);
+
+        bool serialized = saveStateSerializer.JSONToFile<List<U>>(serializationKey, upgrades);
     }
 }

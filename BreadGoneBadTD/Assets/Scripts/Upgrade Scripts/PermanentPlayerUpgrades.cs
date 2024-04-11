@@ -21,7 +21,7 @@ public class PermanentPlayerUpgrades : MonoBehaviour
         // };
 
         // return tempData;
-        return PermanentPlayerUpgradesManager.GetBoughtUpgrades();
+        return PermanentPlayerUpgradesManager.GetAll();
     }
 
     public int GetExtraAttackDamage()
