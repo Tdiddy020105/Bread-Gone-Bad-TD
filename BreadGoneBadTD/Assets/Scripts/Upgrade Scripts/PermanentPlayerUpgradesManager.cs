@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-public class PermanentPlayerUpgradesManager : UpgradeManagerBase<PlayerData, SavePlayerData>
+public class PermanentPlayerUpgradesManager : PermanentUpgradeManagerBase<PlayerData, SavePlayerData>
 {
     // All logic is handled within the "UpgradeManagerBase" class...
     protected override string SerializationKey()
@@ -16,8 +16,11 @@ public class PermanentPlayerUpgradesManager : UpgradeManagerBase<PlayerData, Sav
     protected override SavePlayerData upgradeSettingsToSaveState(PlayerData playerData)
     {
         SavePlayerData savePlayerData = new SavePlayerData();
+
+        savePlayerData.name = playerData.name;
         savePlayerData.attackDamage = playerData.attackDamage;
         savePlayerData.movementSpeed = playerData.movementSpeed;
+
         return savePlayerData;
     }
 }

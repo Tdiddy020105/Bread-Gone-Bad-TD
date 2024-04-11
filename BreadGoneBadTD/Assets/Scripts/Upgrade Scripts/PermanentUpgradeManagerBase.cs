@@ -3,7 +3,7 @@ using UnityEngine;
 
 /// <typeparam name="T">The ScriptableObject that holds the settings</typeparam>
 /// <typeparam name="U">The save state equivalent of T</typeparam>
-public abstract class UpgradeManagerBase<T, U> : MonoBehaviour where T : ScriptableObject
+public abstract class PermanentUpgradeManagerBase<T, U> : MonoBehaviour where T : ScriptableObject
 {
     public bool Buy(Upgrade<T> upgrade, GameObject obj)
     {
@@ -12,20 +12,21 @@ public abstract class UpgradeManagerBase<T, U> : MonoBehaviour where T : Scripta
             return false;
         }
 
-        CurrencyManager.Instance.Spend(upgrade.unlockCurrencyAmount, CurrencyType.PERMANENT);
-
         List<U> boughtUpgrades = GetBoughtUpgrades(this.SerializationKey());
         U saveState = this.upgradeSettingsToSaveState(upgrade.settings);
 
         boughtUpgrades.Add(saveState);
-        bool serialization = this.SerializeUpgrades(boughtUpgrades, this.SerializationKey());
-        if( serialization = true ){
-            obj.SetActive(false);
-            return true;
-        }
-        CurrencyManager.Instance.Earn(upgrade.UnlockCurrencyAmount, CurrencyType.PERMANENT);
-        return false;
 
+        // Make sure that the upgrades have been serialized before spending the currency
+        if(!this.SerializeUpgrades(boughtUpgrades, this.SerializationKey()))
+        {
+            return false;
+        }
+
+        CurrencyManager.Instance.Spend(upgrade.unlockCurrencyAmount, CurrencyType.PERMANENT);
+        obj.SetActive(false); // Hide UI element
+
+        return true;
     }
 
     protected static List<U> GetBoughtUpgrades(string serializationKey)
@@ -50,7 +51,6 @@ public abstract class UpgradeManagerBase<T, U> : MonoBehaviour where T : Scripta
     {
         SaveStateSerializer saveStateSerializer = new SaveStateSerializer();
 
-        bool serialized = saveStateSerializer.JSONToFile<List<U>>(serializationKey, upgrades);
-        return serialized;
+        return saveStateSerializer.JSONToFile<List<U>>(serializationKey, upgrades);
     }
 }

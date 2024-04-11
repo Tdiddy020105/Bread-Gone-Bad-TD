@@ -4,6 +4,7 @@ using UnityEngine;
 [Serializable]
 public class SavePlayerData
 {
-    [SerializeField] public int attackDamage;
-    [SerializeField] public int movementSpeed;
+    public string name;
+    public int attackDamage;
+    public int movementSpeed;
 }

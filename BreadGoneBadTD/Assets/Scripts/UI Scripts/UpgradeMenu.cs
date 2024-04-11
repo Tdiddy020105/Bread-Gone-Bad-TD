@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Linq;
+using UnityEngine.AI;
 
 public class UpgradeMenu : MonoBehaviour
 {
@@ -13,16 +15,15 @@ public class UpgradeMenu : MonoBehaviour
 
     void Start()
     {
-        foreach (Upgrade<PlayerData> upgrade in upgrades)
-        {
-            CreateButton(upgrade);
-        }
-        permanentCurrencyText.text = CurrencyManager.Instance.GetCurrencyAmount(CurrencyType.PERMANENT).ToString();
+        this.DisplayUpgrades();
+        this.DisplayPermanentCurrency();
+
+        CurrencyManager.Instance.Earn(100, CurrencyType.PERMANENT);
     }
 
     private void Update()
     {
-        permanentCurrencyText.text = CurrencyManager.Instance.GetCurrencyAmount(CurrencyType.PERMANENT).ToString();
+        this.DisplayPermanentCurrency();
     }
 
     private void CreateButton(Upgrade<PlayerData> upgrade)
@@ -36,5 +37,41 @@ public class UpgradeMenu : MonoBehaviour
         button.onClick.RemoveAllListeners();
         button.onClick.AddListener(delegate { this.GetComponent<PermanentPlayerUpgradesManager>()?.Buy(upgrade, obj); });
         obj.name = upgrade.name;
+    }
+
+    private void DisplayUpgrades()
+    {
+        List<SavePlayerData> boughtUpgrades = PermanentPlayerUpgradesManager.GetAll();
+
+        foreach (Upgrade<PlayerData> upgrade in upgrades)
+        {
+            if (this.UpgradeHasBeenBought(upgrade, boughtUpgrades))
+            {
+                continue;
+            }
+
+            CreateButton(upgrade);
+        }
+    }
+
+    private void DisplayPermanentCurrency()
+    {
+        permanentCurrencyText.text = CurrencyManager.Instance.GetCurrencyAmount(CurrencyType.PERMANENT).ToString();
+    }
+
+    private bool UpgradeHasBeenBought(Upgrade<PlayerData> upgrade, List<SavePlayerData> boughtUpgrades)
+    {
+        bool currentUpgradeHasBeenBought = false;
+
+        foreach (SavePlayerData boughtUpgrade in boughtUpgrades)
+        {
+            if (boughtUpgrade.name == upgrade.settings.name)
+            {
+                currentUpgradeHasBeenBought = true;
+                break;
+            }
+        }
+
+        return currentUpgradeHasBeenBought;
     }
 }
