@@ -1,7 +1,8 @@
+using System;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "SavePlayerData", menuName = "ScriptableObjects/SavePlayerData")]
-public class SavePlayerData : ScriptableObject
+[Serializable]
+public class SavePlayerData
 {
     [SerializeField] public int attackDamage;
     [SerializeField] public int movementSpeed;

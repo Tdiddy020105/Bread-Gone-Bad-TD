@@ -18,7 +18,6 @@ public class UpgradeMenu : MonoBehaviour
             CreateButton(upgrade);
         }
 
-        CurrencyManager.Instance.Earn(100, CurrencyType.PERMANENT);
         permanentCurrencyText.text = CurrencyManager.Instance.GetCurrencyAmount(CurrencyType.PERMANENT).ToString();
     }
 
