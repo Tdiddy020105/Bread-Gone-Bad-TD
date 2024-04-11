@@ -4,7 +4,22 @@
     using UnityEngine.InputSystem;
 
 
-    public class InputSystem : MonoBehaviour
+public class InputSystem : MonoBehaviour
+{
+    public Rigidbody2D rb;
+    public float moveSpeed;
+    public Animator animator;
+    private Vector2 _moveDirection;
+    private PermanentPlayerUpgrades permanentUpgrades = null;
+
+    public InputActionReference move;
+
+    private void Start()
+    {
+        this.permanentUpgrades = this.GetComponent<PermanentPlayerUpgrades>();
+    }
+
+    private void Update()
     {
         public Rigidbody2D rb;
         public float moveSpeed;
@@ -35,3 +50,9 @@
             rb.velocity = _moveDirection * moveSpeed;
         }
     }
+
+    private void FixedUpdate()
+    {
+        rb.velocity = _moveDirection * (moveSpeed + (float)(this.permanentUpgrades?.GetExtraMovementSpeed() ?? 0.0f));
+    }
+}

@@ -22,6 +22,7 @@ class Player
     public int Health;
     public Item[] Inventory;
 }
+
 #endregion
 
 public class Test : MonoBehaviour

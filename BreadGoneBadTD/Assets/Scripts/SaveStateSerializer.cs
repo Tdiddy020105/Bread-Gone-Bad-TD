@@ -6,13 +6,14 @@ using UnityEngine;
 
 public class SaveStateSerializer
 {
-    /// <summary>
+    /// <summary>  
     /// Serializes any object to a JSON file.
     /// </summary>
     /// <typeparam name="T">The type of the object that you're serializing.</typeparam>
+    /// <typeparam name="U">The type of the object that you're serializing.</typeparam>
     /// <param name="fileName">The relative path + name (without a file extension) of the file.</param>
     /// <param name="data">The data that you want to serialize.</param>
-    public bool JSONToFile<T>(string fileName, T data)
+    public bool JSONToFile<U>(string fileName, U data)
     {
         JsonSerializationParameters parameters = new()
         {
@@ -47,25 +48,26 @@ public class SaveStateSerializer
     /// Deserializes a JSON file.
     /// </summary>
     /// <typeparam name="T">The type of the object that you're deserializing.</typeparam>
+    /// <typeparam name="U">The type of the object that you're serializing.</typeparam>
     /// <param name="fileName">The relative path + name (without a file extension) to the file.</param>
-    public T FileToJSON<T>(string fileName)
+    public U FileToJSON<U>(string fileName)
     {
         string path = $"{Application.persistentDataPath}/{fileName}.json";
 
         if (!File.Exists(path))
         {
-            return default(T);
+            return default(U);
         }
 
         try {
             string potentialJSON = File.ReadAllText(path);
-            T data = JsonSerialization.FromJson<T>(potentialJSON);
+            U data = JsonSerialization.FromJson<U>(potentialJSON);
 
             return data;
         } catch (Exception e) {
             Debug.LogError(e.Message);
         }
 
-        return default(T);
+        return default(U);
     }
 }
