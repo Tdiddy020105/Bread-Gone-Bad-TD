@@ -71,11 +71,12 @@ namespace DesignPatterns.EnemyPool
                             //Uses the EnemySpawn script which instantiates a copy of the current enemy prefab using spawnPosition as vector3
                             enemySpawn.Spawn(spawnPosition);
                             remainingEnemySpawnAmount--;
+                            spawnPosition = spawnPositionTransformList[UnityEngine.Random.Range(0, spawnPositionTransformList.Count)].position;
 
                             if (remainingEnemySpawnAmount <= 0)
                             {
                                 waveState = WaveState.Waiting;
-                                spawnPosition = spawnPositionTransformList[UnityEngine.Random.Range(0, spawnPositionTransformList.Count)].position;
+                                
                                 Debug.Log(spawnPosition);
                                 nextWaveSpawnTimer = 5f;
 
