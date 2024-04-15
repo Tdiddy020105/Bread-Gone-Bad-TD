@@ -4044,6 +4044,18 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3710188333129727256, guid: 190424ad3569598479dd76b3eb40adf8, type: 3}
+      propertyPath: m_AutoBraking
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710188333129727256, guid: 190424ad3569598479dd76b3eb40adf8, type: 3}
+      propertyPath: m_AngularSpeed
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710188333129727256, guid: 190424ad3569598479dd76b3eb40adf8, type: 3}
+      propertyPath: m_ObstacleAvoidanceType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4908466055324217435, guid: 190424ad3569598479dd76b3eb40adf8, type: 3}
       propertyPath: m_IsTrigger
       value: 1
