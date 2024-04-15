@@ -21,8 +21,7 @@ public class AttackableStructure : MonoBehaviour
         if (this.health <= 0)
         {
             this.health = 0;
-
-            // TODO: Trigger game over here...
+            this.SendMessage("AttackableStructureDestroyed");
         }
     }
 

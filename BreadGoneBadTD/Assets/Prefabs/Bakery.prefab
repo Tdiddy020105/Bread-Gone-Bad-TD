@@ -58,6 +58,7 @@ GameObject:
   - component: {fileID: 6923467843991168279}
   - component: {fileID: 7073069528392506786}
   - component: {fileID: 3417906207383439665}
+  - component: {fileID: 6155034072369572385}
   m_Layer: 0
   m_Name: Bakery
   m_TagString: Untagged
@@ -147,6 +148,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+--- !u!114 &6155034072369572385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1595221212790221431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cefd5ce5adb60c742b0de7ac36930453, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6953773004949337527
 GameObject:
   m_ObjectHideFlags: 0
