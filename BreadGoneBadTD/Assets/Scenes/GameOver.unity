@@ -994,6 +994,7 @@ GameObject:
   - component: {fileID: 1394545207}
   - component: {fileID: 1394545211}
   - component: {fileID: 1394545212}
+  - component: {fileID: 1394545213}
   m_Layer: 5
   m_Name: GameOver
   m_TagString: Untagged
@@ -1111,6 +1112,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 24b116c09e26ab64f8d8597a27f50320, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waveNumber: {fileID: 1966335243}
+  permanentCurrencyReceivedNumber: {fileID: 758425388}
+--- !u!114 &1394545213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1394545206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cefd5ce5adb60c742b0de7ac36930453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1832595255
@@ -1303,7 +1318,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 21
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
