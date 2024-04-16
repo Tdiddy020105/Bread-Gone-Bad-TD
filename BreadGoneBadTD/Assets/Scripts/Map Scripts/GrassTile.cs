@@ -27,12 +27,10 @@ public class GrassTile : Tile
     {
         if (!hasTower && towerPlacer.GetPlacementMode())
         {
-            Debug.Log(this.name);
             towerPlacer.PlaceTower(this.transform);
             hasTower = true;
             highlight.SetActive(false);
         }
-        Debug.Log(this.name);
     }
 
     private void OnMouseEnter()
