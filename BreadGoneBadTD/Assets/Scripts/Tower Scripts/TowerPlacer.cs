@@ -5,9 +5,11 @@ using UnityEngine.UI;
 
 public class TowerPlacer : MonoBehaviour
 {
+    [SerializeField] GameObject playerCharacter;
     [SerializeField] GameObject towerPrefab;
     [SerializeField] Image currencySprite;
     [SerializeField] TextMeshProUGUI currencyText;
+    [SerializeField] float placementRange = 10f;
 
     private Color color;
 
@@ -36,10 +38,30 @@ public class TowerPlacer : MonoBehaviour
     {
         if (placementMode)
         {
-            towerPrefab.GetComponent<Tower>().SetData(this.towerData);
-            placementMode = false;
-            Instantiate(towerPrefab, obj.transform, false);
-            CurrencyManager.Instance.Spend(this.towerData.price);
+            if (Input.GetMouseButtonDown(0))
+            {
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+
+                if (Physics.Raycast(ray, out hit))
+                {
+                    Vector3 placementPosition = hit.point;
+
+                    float distanceToPlayer = Vector3.Distance(playerCharacter.transform.position, placementPosition);
+
+                    if (distanceToPlayer <= placementRange)
+                    {
+                        towerPrefab.GetComponent<Tower>().SetData(this.towerData);
+                        placementMode = false;
+                        Instantiate(towerPrefab, obj.transform, false);
+                        CurrencyManager.Instance.Spend(this.towerData.price);
+                    }
+                    else
+                    {
+                        Debug.Log("Tower placement out of range!");
+                    }
+                }
+            }
         }
     }
 
