@@ -38,6 +38,27 @@ public class Tower : MonoBehaviour
         {
             this.attackTimer = 0.0f;
         }
+
+        // Check for mouse click
+        if (Input.GetMouseButtonDown(0))
+        {
+            // Cast a ray from the mouse position into the scene
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
+
+            // If the ray hits a collider
+            if (hit.collider != null)
+            {
+                // Check if the collider belongs to a tower
+                Tower tower = hit.collider.gameObject.GetComponent<Tower>();
+                if (tower != null)
+                {
+                    // Delete the tower
+                    Destroy(hit.collider.gameObject);
+                    CurrencyManager.Instance.Earn(this.towerData.price);
+                }
+            }
+        }
     }
 
     private void AttackEnemies()
@@ -54,18 +75,6 @@ public class Tower : MonoBehaviour
                 LaunchProjectile(enemy.transform.position);
             }
         }
-    }
-
-    private void OnMouseDown()
-    {
-        DestroyTower();
-        Debug.Log(this + " tower was clicked");
-    }
-
-    private void DestroyTower()
-    {
-        Destroy(this);
-        CurrencyManager.Instance.Earn(this.towerData.price);
     }
 
     public TowerData GetData()

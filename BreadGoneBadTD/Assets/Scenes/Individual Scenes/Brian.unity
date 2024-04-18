@@ -152,9 +152,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbaa20bbea4861a439d59cce1b21a024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerCharacter: {fileID: 4779252013123146425, guid: 1fa3660252106384bbb1489979a317e1, type: 3}
   towerPrefab: {fileID: 4423694812007710231, guid: 11b2068decb7fec48b70fc7f187b2d7f, type: 3}
   currencySprite: {fileID: 0}
   currencyText: {fileID: 0}
+  placementRange: 10
 --- !u!4 &35526160
 Transform:
   m_ObjectHideFlags: 0
