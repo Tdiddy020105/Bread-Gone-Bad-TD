@@ -27,9 +27,28 @@ public class GrassTile : Tile
     {
         if (!hasTower && towerPlacer.GetPlacementMode())
         {
-            towerPlacer.PlaceTower(this.transform);
-            hasTower = true;
-            highlight.SetActive(false);
+            // Get the position of the player character
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            Vector3 playerPosition = player.transform.position;
+
+            // Calculate the distance between this tile and the player character
+            float distanceToPlayer = Vector3.Distance(playerPosition, transform.position);
+
+            // Define your desired range for tower placement (you can adjust this value)
+            float placementRange = 10f; // Adjust this value as needed
+
+            // Check if the tile is within range of the player character
+            if (distanceToPlayer <= placementRange)
+            {
+                // Place tower only if within range
+                towerPlacer.PlaceTower(this.transform);
+                hasTower = true;
+                highlight.SetActive(false);
+            }
+            else
+            {
+                Debug.Log("Tile is out of range for tower placement.");
+            }
         }
     }
 

@@ -32,10 +32,10 @@ namespace DesignPatterns.EnemyPool
 
         private void Start()
         {
-            Debug.Log("Start");
+            //Debug.Log("Start");
 
             waveState = WaveState.WaitingToSpawnNextWave;
-            Debug.Log(waveState.ToString());
+            //Debug.Log(waveState.ToString());
             spawnPosition = spawnPositionTransformList[UnityEngine.Random.Range(0, spawnPositionTransformList.Count)].position;
 
             OnEnemiesDefeated += HandleEnemiesDefeated;
@@ -54,7 +54,7 @@ namespace DesignPatterns.EnemyPool
                     nextWaveSpawnTimer -= Time.deltaTime;
                     if (nextWaveSpawnTimer < 0f)
                     {
-                        Debug.Log("Spawning wave");
+                        //Debug.Log("Spawning wave");
                         SpawnWave();
                     }
 
@@ -77,7 +77,7 @@ namespace DesignPatterns.EnemyPool
                             {
                                 waveState = WaveState.Waiting;
                                 
-                                Debug.Log(spawnPosition);
+                                //Debug.Log(spawnPosition);
                                 nextWaveSpawnTimer = 5f;
 
                             }
@@ -86,7 +86,7 @@ namespace DesignPatterns.EnemyPool
                     break;
 
                 case WaveState.BossWave:
-                    Debug.Log("Spawning Boss wave");
+                    //Debug.Log("Spawning Boss wave");
                     enemySpawn.SpawnBoss();
                     waveState = WaveState.Waiting;
                     nextWaveSpawnTimer = 10f;
@@ -113,21 +113,21 @@ namespace DesignPatterns.EnemyPool
 
         private void HandleEnemiesDefeated()
         {
-            Debug.Log("All enemies are defeated!");
+            //Debug.Log("All enemies are defeated!");
             
             waveState = WaveState.WaitingToSpawnNextWave;
         }
 
         private void CheckEnemyList()
         {
-            Debug.Log(remainingEnemySpawnAmount);
+            //Debug.Log(remainingEnemySpawnAmount);
             if (remainingEnemySpawnAmount <= 0)
             {
                 
                 if (enemySpawn.Enemies.Count == 0)
                 {
                     OnEnemiesDefeated();
-                    Debug.Log("Enemies defeated!");
+                    //Debug.Log("Enemies defeated!");
                 }
             }
         }

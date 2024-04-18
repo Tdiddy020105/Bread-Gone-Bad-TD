@@ -38,30 +38,10 @@ public class TowerPlacer : MonoBehaviour
     {
         if (placementMode)
         {
-            if (Input.GetMouseButtonDown(0))
-            {
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                RaycastHit hit;
-
-                if (Physics.Raycast(ray, out hit))
-                {
-                    Vector3 placementPosition = hit.point;
-
-                    float distanceToPlayer = Vector3.Distance(playerCharacter.transform.position, placementPosition);
-
-                    if (distanceToPlayer <= placementRange)
-                    {
-                        towerPrefab.GetComponent<Tower>().SetData(this.towerData);
-                        placementMode = false;
-                        Instantiate(towerPrefab, obj.transform, false);
-                        CurrencyManager.Instance.Spend(this.towerData.price);
-                    }
-                    else
-                    {
-                        Debug.Log("Tower placement out of range!");
-                    }
-                }
-            }
+            towerPrefab.GetComponent<Tower>().SetData(this.towerData);
+            placementMode = false;
+            Instantiate(towerPrefab, obj.transform, false);
+            CurrencyManager.Instance.Spend(this.towerData.price);
         }
     }
 

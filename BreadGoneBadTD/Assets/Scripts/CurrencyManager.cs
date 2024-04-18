@@ -30,7 +30,7 @@ public class CurrencyManager
 
     public void Reset()
     {
-        this.currency[CurrencyType.IN_GAME] = 0;
+        this.currency[CurrencyType.IN_GAME] = 100;  //Use this to set the beginning currency amount!
         this.currency[CurrencyType.PERMANENT] = this.GetPermanentCurrency();
     }
 

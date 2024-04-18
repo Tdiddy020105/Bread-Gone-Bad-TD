@@ -1454,6 +1454,14 @@ PrefabInstance:
       value: TowerPlacer
       objectReference: {fileID: 0}
     - target: {fileID: 7671157252995857804, guid: 153aa79f28a076f4f979d77b9957b703, type: 3}
+      propertyPath: currencyText
+      value: 
+      objectReference: {fileID: 2303946}
+    - target: {fileID: 7671157252995857804, guid: 153aa79f28a076f4f979d77b9957b703, type: 3}
+      propertyPath: currencySprite
+      value: 
+      objectReference: {fileID: 113780337}
+    - target: {fileID: 7671157252995857804, guid: 153aa79f28a076f4f979d77b9957b703, type: 3}
       propertyPath: playerCharacter
       value: 
       objectReference: {fileID: 609944112}
@@ -2651,26 +2659,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 47564904848657245, guid: 1fa3660252106384bbb1489979a317e1, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 411748140468605230, guid: 1fa3660252106384bbb1489979a317e1, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1324200337708802570, guid: 1fa3660252106384bbb1489979a317e1, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 13.600406
-      objectReference: {fileID: 0}
-    - target: {fileID: 1324200337708802570, guid: 1fa3660252106384bbb1489979a317e1, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 13.600406
-      objectReference: {fileID: 0}
-    - target: {fileID: 1324200337708802570, guid: 1fa3660252106384bbb1489979a317e1, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 13.600406
-      objectReference: {fileID: 0}
     - target: {fileID: 1324200337708802570, guid: 1fa3660252106384bbb1489979a317e1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 15.62
@@ -2711,30 +2699,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3214845257247940810, guid: 1fa3660252106384bbb1489979a317e1, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4779252013123146425, guid: 1fa3660252106384bbb1489979a317e1, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 5800826807722965002, guid: 1fa3660252106384bbb1489979a317e1, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8359525324429548295, guid: 1fa3660252106384bbb1489979a317e1, type: 3}
-      propertyPath: attackAction
-      value: 
-      objectReference: {fileID: -920811105391948422, guid: 9ee4ec917e3bd8841a5bc7a96093fbb9, type: 3}
-    - target: {fileID: 8359525324429548295, guid: 1fa3660252106384bbb1489979a317e1, type: 3}
-      propertyPath: currentWeapon
-      value: 
-      objectReference: {fileID: 11400000, guid: 485ae05418f3b984888515dc889838fd, type: 2}
-    - target: {fileID: 8359525324429548295, guid: 1fa3660252106384bbb1489979a317e1, type: 3}
-      propertyPath: attackAreaPrefab
-      value: 
-      objectReference: {fileID: 7774568012247857799, guid: c9bd00fd9af2de242a5dff78923d7883, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
